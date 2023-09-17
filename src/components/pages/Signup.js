@@ -56,7 +56,7 @@ function Signup(){
      return(
         <div className="reg-bk">
             <div className='back'><Link to="/" className='td'><BsArrowLeftShort/>back to Imgur</Link></div>
-            <div className='reg-text'><h2>imgur</h2>  <p>Admin</p></div>
+            <div className='reg-text'><h2>Costco</h2>  <p>Admin</p></div>
            
             <div className="form-heading4">
                 <h2>Registration with</h2>
@@ -73,7 +73,7 @@ function Signup(){
             </div>
 
             <div className="form-heading2">
-                <h2>or with Imgur</h2>
+                <h2>or with Costco</h2>
             </div>
 
             <form className="form-content-reg" onSubmit={submitForm}>

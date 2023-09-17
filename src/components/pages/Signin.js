@@ -7,7 +7,7 @@ import {FaGoogle} from 'react-icons/fa';
 import {FaYahoo} from 'react-icons/fa';
 import {BsArrowLeftShort} from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
-import { ImgurContext } from '../Context/ImgurContext';
+import { CostcoContext } from '../Context/CostcoContext';
 import axios from "axios";
 
 import './Register.css';
@@ -17,56 +17,151 @@ import { ToastContainer } from 'react-toastify';
 
 function Signin(){
 
-    const {userID, setUserID, setOnline, online,} = useContext(ImgurContext)
+    const {userID, setUserID, setOnline, online,setIsLoggedIn} = useContext(CostcoContext)
 
     const navigate = useNavigate()
     const [err, setErr] = useState(false);
     const [user, setUser] = useState({
-       username: "",
+       email: "",
        password: "",
        lastLogin: "", 
     });
     let login = user;
     
-    const submitForm =(e) => {
-        e.preventDefault();
-        if ( user.username ==="" || user.password ==="" ){
-          setErr(true);
-        }else {
-            setErr(false)
-            axios.post("http://localhost:3007/login", login)
-            .then((resp) => {
-                console.log(resp.data)
-                if(resp.data.msg === 'Login successful'){
-                    console.log(resp.data);
-                localStorage.setItem('Imgur_USER', JSON.stringify(resp.data))
-                setOnline(true)
-                let rawData = localStorage.getItem("Imgur_USER")
-                let localData = JSON.parse(rawData)
+    // const submitForm =(e) => {
+    //     e.preventDefault();
+    //     if ( user.email ==="" || user.password ==="" ){
+    //       setErr(true);
+    //     }else {
+    //         setErr(false)
+    //         axios.post("http://localhost:3008/admin-login", login)
+    //         .then((resp) => {
+    //             console.log(resp.data)
+    //             if(resp.data.msg === 'Login successful'){
+    //                 console.log(resp.data);
+    //             localStorage.setItem('CostcoAdmin_USER', JSON.stringify(resp.data))
+    //             setOnline(true)
+    //             let rawData = localStorage.getItem("CostcoAdmin_USER")
+    //             let localData = JSON.parse(rawData)
         
-                setUserID(localData)
-                setUser({
-                    ...user,
-                    lastLogin: new Date(localData.lastLogin).toLocaleString(),
-                });
+    //             setUserID(localData)
+    //             setUser({
+    //                 ...user,
+    //                 lastLogin: new Date(localData.lastLogin).toLocaleString(),
+    //             });
                
-                    alert("successfully logged in")
-                    toast.success("successfully logged in");
-                    navigate("/dashboard");
-                }else{
-                    alert("invalid user please signup..")
+    //                 alert("successfully logged in")
+    //                 toast.success("successfully logged in");
+    //                 navigate("/dashboard");
+    //             }else{
+    //                 alert("invalid user please signup..")
                     
-                }
+    //             }
              
-            })
+    //         })
             
+    //     }
+    //  };
+
+    // const submitForm = (e) => {
+    //     e.preventDefault();
+    //     if (user.email === "" || user.password === "") {
+    //       setErr(true);
+    //     } else {
+    //       setErr(false);
+    //       axios.post("http://localhost:3008/admin-login", login)
+    //         .then((resp) => {
+    //           console.log(resp.data);
+    //           if (resp.data.token) {
+    //             // Store the token in localStorage
+    //             localStorage.setItem('CostcoAdmin_TOKEN', resp.data.token);
+      
+    //             // ... rest of your code
+    //             localStorage.setItem('CostcoAdmin_USER', JSON.stringify(resp.data.data));
+    //             setOnline(true);
+    //             let rawData = localStorage.getItem("CostcoAdmin_USER");
+    //             let localData = JSON.parse(rawData);
+      
+    //             setUserID(localData);
+    //             setUser({
+    //               ...user,
+    //               lastLogin: new Date(localData.lastLogin).toLocaleString(),
+    //             });
+      
+    //             alert("successfully logged in");
+    //             toast.success("successfully logged in");
+    //             navigate("/dashboard");
+    //           } else {
+    //             alert("Invalid user. Please sign up.");
+    //           }
+    //         })
+    //         .catch(error => {
+    //           console.error(error);
+    //           // Handle errors here
+    //         });
+    //     }
+    //   };
+      
+    // const submitForm = (e) => {
+    //     e.preventDefault();
+    //     if (user.email === "" || user.password === "") {
+    //       setErr(true);
+    //     } else {
+    //       setErr(false);
+    //       axios.post("http://localhost:3008/admin-login", user)
+    //         .then((resp) => {
+    //           if (resp.data.token) {
+    //             localStorage.setItem('CostcoAdmin_USER', JSON.stringify(resp.data.token));
+    //             setOnline(true);
+    //             setUserID(resp.data.token);
+    //             toast.success("Successfully logged in");
+    //             navigate("/dashboard");
+    //           } else {
+    //             alert("Invalid user. Please sign up.");
+    //           }
+    //         })
+    //         .catch((error) => {
+    //           console.error(error);
+    //           alert("An error occurred. Please try again later.");
+    //         });
+    //     }
+    //   };
+ 
+    const submitForm = (e) => {
+        e.preventDefault();
+        if (user.email === "" || user.password === "") {
+          setErr(true);
+        } else {
+          setErr(false);
+          axios.post("http://localhost:3008/admin-login", user)
+            .then((resp) => {
+              if (resp.status === 401 && resp.data.message === 'Unauthorized') {
+                alert("Unauthorized. Please sign in with an admin account.");
+              } else if (resp.data.token) {
+                const newToken = resp.data.token;
+                localStorage.setItem('CostcoAdmin_USER', JSON.stringify(newToken));
+                setOnline(true);
+                setIsLoggedIn(true);
+                setUserID(newToken);
+                toast.success("Successfully logged in");
+                navigate("/dashboard");
+              } else {
+                alert("Invalid user. Please sign up.");
+              }
+            })
+            .catch((error) => {
+              console.error(error);
+              alert("An error occurred. Please try again later.");
+            });
         }
-     };
+      };
+      
+
 
      console.log(userID);
      return(
         <div className="reg-bk">
-            <div className='reg-text'><h2>imgur</h2> <p>Admin</p></div>
+            <div className='reg-text'><h2>Costco</h2> <p>Admin</p></div>
            
             <div className="form-heading4">
                 <h2>Sign In with</h2>
@@ -83,14 +178,15 @@ function Signin(){
             </div>
 
             <div className="form-heading2">
-                <h2>or with Imgur</h2>
+                <h2>or with Costco</h2>
             </div>
+            <div className='bk-1'>
 
-            <form className="form-content-reg" onSubmit={submitForm}>
+            <form className="form-content-reg " onSubmit={submitForm}>
                 <div className="form-control">
                     
-                    <input type="text" value={user.username} placeholder='Username' onChange={(e) => setUser({...user, username: e.target.value})}/>
-                    {err === true && user.username === "" ? <span>Username required</span> : null}
+                    <input type="text" value={user.email} placeholder='Email' onChange={(e) => setUser({...user, email: e.target.value})}/>
+                    {err === true && user.email === "" ? <span>Email required</span> : null}
                 </div>
                
                 <div className="form-control">
@@ -108,6 +204,7 @@ function Signin(){
                 </div>
                 <ToastContainer />
             </form>
+            </div>
         </div>
          
      )

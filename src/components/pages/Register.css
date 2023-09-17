@@ -2,6 +2,10 @@
     background-color: #141518;
   }
 
+  .bk-1{
+    background-color: #141518;
+  }
+
   .back {
  
     color: #fff;
@@ -106,14 +110,15 @@
     display: grid;
     /* grid-template-columns: repeat(2, 1fr); */
     gap: 20px;
-    width: 70%;
+    width: 40%;
     margin:  auto;
     padding: 10px 0px;
-    float:right
+    /* float:right; */
+    /* background: #2C2F34; */
   }
 
   .form-content-reg input{
-    width: 550px;
+    width: 510px;
     height: 50px;
     border-radius: 5px;
     background-color: #141518;

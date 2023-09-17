@@ -1,9 +1,9 @@
-import AsideBar from "../pages/AsideBar";
+import AsideBar from "./AsideBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function Tag() {
+function Category() {
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({
@@ -14,21 +14,21 @@ function Tag() {
     e.preventDefault();
     const userData = {
       title: user.title,
-      post: [],
+      product: [],
     };
 
     console.log(user);
     console.log(userData);
 
     axios
-      .post("http://localhost:3007/tag", userData)
+      .post("http://localhost:3008/category", userData)
       .then((resp) => resp.json())
       .then((data) => {
         setUser(data);
       });
 
       if(setUser){
-        alert("Tag Created")
+        alert("Category Created")
         setUser( {
             title: "",
         
@@ -37,7 +37,7 @@ function Tag() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3007/tag")
+    fetch("http://localhost:3008/category")
       .then((resp) => resp.json())
       .then((data) => {
         setTags(data);
@@ -45,13 +45,10 @@ function Tag() {
       });
   }, []);
 
-  // const onDelete = (_id) => {
-  //   axios.delete("http://localhost:300/tag/" + _id);
-  // };
 
   const onDelete = async (_id) => {
     try {
-      await axios.delete("http://localhost:3007/tag/" + _id); 
+      await axios.delete("http://localhost:3008/category/" + _id); 
       setTags(prevUsers => prevUsers.filter(tag => tag._id !== _id));
       alert("Tag deleted successfully");
       // toast.success("User deleted successfully");
@@ -71,7 +68,7 @@ function Tag() {
       <AsideBar />
       <form className="form-content-tag" onSubmit={submitForm}>
         <div className="form-control">
-          <label htmlFor="first_name">Tag</label>
+          <label htmlFor="first_name">Category</label>
           <input
             type="text"
             value={user.title}
@@ -83,7 +80,7 @@ function Tag() {
         </div>
       </form>
 
-      <div className="admin-users">Tags</div>
+      <div className="admin-users">Categories</div>
       <div className="tag-list">
         {loading === true ? (
           <div>Loading please wait...</div>
@@ -92,8 +89,8 @@ function Tag() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Tag ID</th>
-                <th>Tag Title</th>
+                <th>Category ID</th>
+                <th>Category Title</th>
                 <th>Options</th>
               </tr>
             </thead>
@@ -121,5 +118,5 @@ function Tag() {
   );
 }
 
-export default Tag;
+export default Category;
 

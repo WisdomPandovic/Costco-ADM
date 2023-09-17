@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import {ImHome3} from 'react-icons/im';
 import {FaUserCheck} from "react-icons/fa";
 import {FaUsers} from "react-icons/fa";
 import {RxDashboard} from "react-icons/rx";
@@ -6,21 +7,39 @@ import {GiTeamUpgrade} from "react-icons/gi";
 import {GiOpenedFoodCan} from "react-icons/gi";
 import {FcSearch} from "react-icons/fc";
 import {DiPhonegap} from "react-icons/di";
-import { ImgurContext } from '../Context/ImgurContext';
+import {SiProducthunt} from "react-icons/si";
+import {RiUserStarFill} from "react-icons/ri";
+import {SiPostman} from "react-icons/si";
+import { CostcoContext } from '../Context/CostcoContext';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function AsideBar(){
-    const {isLoggedIn, setIsLoggedIn} = useContext(ImgurContext)
+    const {isLoggedIn, setIsLoggedIn} = useContext(CostcoContext)
     const navigate = useNavigate()
+
+const handleNewPostClick = (route) => {
+    if (isLoggedIn) {
+      navigate(route);
+    } else {
+      alert("You need to sign in to create a post.");
+ 
+      navigate("/");
+    }
+  };
+
+  // const handleLogin = () => {
+  //   setIsLoggedIn(true);
+  // };
 
     const handleLogout = () => {
         try {
-          const rawData = localStorage.getItem('Imgur_USER');
+          const rawData = localStorage.getItem('CostcoAdmin_USER');
       
           if (rawData) {
             const localData = JSON.parse(rawData);
-            localStorage.removeItem('Imgur_USER');
+            localStorage.removeItem('CostcoAdmin_USER');
+            localStorage.removeItem('CostcoAdmin_TOKEN');
             navigate("/");
           }
       
@@ -32,37 +51,68 @@ function AsideBar(){
     return(
         <div>
             <aside className="aside-bar">
+                <div>
+                    <div>
+                    {/* {` ${JSON.parse(localStorage.getItem('CostcoAdmin_USER')).data.name}!. `} */}
+                    </div>
+                </div>
                 <div className="dashboard">
                     <div className="aside-links">
-                        <Link to="/dashboard" class="aside-bar-link"><RxDashboard/> Dashboard</Link>
+                        <div onClick={() => handleNewPostClick("/dashboard")}>
+                            <Link to="/dashboard" class="aside-bar-link nav-flex" >
+                                <ImHome3/>
+                                <p>Dashboard</p> 
+                            </Link>
+                        </div>
+                    </div><hr/>
+                    <div className="aside-links">
+                        <div onClick={() => handleNewPostClick("/product")}>
+                            <Link to="/product" class="aside-bar-link nav-flex" >
+                                <DiPhonegap/>
+                                <p>View Product</p>
+                            </Link>  
+                        </div>
                     </div><hr/>
                     <div >
-                        <Link to="/post" class="aside-bar-link"><DiPhonegap/> View Post</Link>  
+                        <div onClick={() => handleNewPostClick("/users")}>
+                            <Link to="/users" class="aside-bar-link nav-flex">
+                                <FaUsers/> 
+                                <p>Users</p>
+                            </Link>
+                        </div>
                     </div><hr/>
                     <div >
-                        <Link to="/users" class="aside-bar-link"><FaUsers/> Users</Link>
+                        <div onClick={handleNewPostClick}>
+                            <Link to="/createProduct" class="aside-bar-link nav-flex">
+                                <SiProducthunt/> 
+                                <p>Create Product</p>
+                            </Link>
+                        </div>
                     </div><hr/>
                     <div >
-                        <Link to="/createPost" class="aside-bar-link"><GiOpenedFoodCan/> Create Post </Link>
+                        <div onClick={handleNewPostClick}> 
+                            <Link to="/createUsers" class="aside-bar-link nav-flex">
+                                <RiUserStarFill/> 
+                                <p>Create Users</p>
+                            </Link>
+                        </div>
                     </div><hr/>
                     <div >
-                        <Link to="/createUsers" class="aside-bar-link"><GiTeamUpgrade/> Create Users</Link>
+                        <div onClick={handleNewPostClick}>
+                            <Link to="/category" class="aside-bar-link nav-flex">
+                                <RxDashboard/> 
+                                <p>Create Category</p>
+                            </Link>
+                        </div>
                     </div><hr/>
                     <div >
-                        <Link to="/tag" class="aside-bar-link"><GiTeamUpgrade/> Create Tag</Link>
+                        <div onClick={handleNewPostClick}>
+                            <Link to="/usersWithProducts" class="aside-bar-link nav-flex">
+                                <SiPostman/> 
+                                <p>Users Products</p>
+                            </Link>
+                        </div>
                     </div><hr/>
-                    <div >
-                        <Link to="/usersWithPosts" class="aside-bar-link"><GiTeamUpgrade/> Users Posts</Link>
-                    </div><hr/>
-                    <div >
-                        <Link to="/postComment" class="aside-bar-link"><GiTeamUpgrade/> Post Comment</Link>
-                    </div><hr/>
-                    <div >
-                        <Link to="/postLikes" class="aside-bar-link"><GiTeamUpgrade/> Post Likes</Link>
-                    </div><hr/>
-                    {/* <div >
-                        <button onClick={handleLogout}><GiTeamUpgrade/> Log out</button>
-                    </div> */}
                 </div>
            </aside>
 
@@ -79,7 +129,7 @@ function AsideBar(){
                     </div>
                     {/* <div><FaUserCheck/></div> */}
                     <div className='log-out'>
-                        <button onClick={handleLogout}>Log out</button>
+                        <button onClick={handleLogout}>Sign out</button>
                     </div>
                 </div>
            </nav>

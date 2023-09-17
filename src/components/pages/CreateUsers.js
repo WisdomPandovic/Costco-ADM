@@ -4,7 +4,7 @@ import axios from "axios";
 
 function CreateUsers() {
   const [user, setUser] = useState({
-    username: "",
+    name: "",
     phoneNumber: "",
     email: "",
     password: "",
@@ -13,24 +13,27 @@ function CreateUsers() {
   const submitForm = (e) => {
     e.preventDefault();
     const userData = {
-      username: user.username,
+      name: user.name,
       phoneNumber: user.phoneNumber,
       email: user.email,
       password: user.password,
+      membershipNumber: user.membershipNumber,
+      product:[]
     };
 
     console.log(user);
     console.log(userData);
 
     axios
-      .post("http://localhost:3007/users", userData)
+      .post("http://localhost:3008/admin-users", userData)
       .then((res) => {
         alert("successful")
         setUser({
-             username: "",
+             name: "",
              phoneNumber: "",
              email: "",
              password: "",
+             membershipNumber: "",
          });
       })
       .catch((err) => {
@@ -43,8 +46,8 @@ function CreateUsers() {
       <AsideBar />
       <form className="form-content" onSubmit={submitForm}>
         <div className="form-control">
-          <label htmlFor="first_name">Username</label>
-          <input type="text" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })}/>
+          <label htmlFor="first_name">Name</label>
+          <input type="text" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })}/>
         </div>
 
         <div className="form-control">

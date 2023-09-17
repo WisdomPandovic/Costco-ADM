@@ -29,7 +29,7 @@ function Users(){
   
 
     useEffect(() => {
-        fetch("http://localhost:3007/users")
+        fetch("http://localhost:3008/users")
         .then((resp) => resp.json())
         .then((data) => {
             setAdminUsers(data);
@@ -41,7 +41,7 @@ function Users(){
 
       const onDelete = async (_id) => {
         try {
-          await axios.delete("http://localhost:3007/user/" + _id); 
+          await axios.delete("http://localhost:3008/user/" + _id); 
           setAdminUsers(prevUsers => prevUsers.filter(user => user._id !== _id));
           toast.success("User deleted successfully");
         } catch (error) {
@@ -72,6 +72,7 @@ function Users(){
                                 <th>Phone Number</th>
                                 <th>Email</th>
                                 <th>Password</th>
+                                <th>Role</th>
                                 <th>Last Logged In</th>
                                 <th>Options</th>
                             </tr>
@@ -80,10 +81,11 @@ function Users(){
                             {AdminUsers.map((user, index) => (
                                 <tr key={user._id}>
                                     <td >{index + 1}</td>
-                                    <td>{user.username}</td>
+                                    <td>{user.name}</td>
                                     <td>{user.phoneNumber}</td>
                                     <td>{user.email}</td>
                                     <td>{user.password}</td>
+                                    <td>{user.role}</td>
                                     <td>{formatDate(user.lastLogin)}</td>
                                     <td className="flexv">
                                         <div className="tag-edit">

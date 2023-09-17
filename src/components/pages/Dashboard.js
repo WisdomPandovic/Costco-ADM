@@ -1,16 +1,18 @@
 import AsideBar from "../pages/AsideBar";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {FaUsers} from "react-icons/fa";
-import {FaComment} from 'react-icons/fa';
+import {ImHome3} from 'react-icons/im';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard (){
 
     const [AdminUsers, setAdminUsers] = useState([]);
     const [products, setProducts] = useState([]);
     const [comment, setComment] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:3007/users")
+        fetch("http://localhost:3008/users")
         .then((resp) => resp.json())
         .then((data) => {
             setAdminUsers(data);
@@ -20,20 +22,10 @@ function Dashboard (){
     },[]);
 
     useEffect(() => {
-        fetch("http://localhost:3007/post")
+        fetch("http://localhost:3008/products")
         .then((resp) => resp.json())
         .then((data) => {
             setProducts(data);
-        });
-
-        
-    },[]);
-
-    useEffect(() => {
-        fetch("http://localhost:3007/comments")
-        .then((resp) => resp.json())
-        .then((data) => {
-            setComment(data);
         });
 
         
@@ -44,12 +36,12 @@ function Dashboard (){
     const [postsData, setPostsData] = useState();
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch("http://localhost:3007/post")
+        fetch("http://localhost:3008/products")
         .then((resp) => resp.json())
         .then((data) => {
             console.log(data)
-            const filterTag = data.filter ((post) => {
-                return post.tag.title === "Music";
+            const filterTag = data.filter ((product) => {
+                return product.category.title === "iPhone";
             } )
             setPostsData(filterTag);
             // setPostsData(data);
@@ -59,35 +51,43 @@ function Dashboard (){
         //  console.log(productsData.length)
         
     },[]);
+
+    const [cart, setCart] = useState([]);
+
+    const localStorageCart = localStorage.getItem("social-cart");
+
+    useEffect(() => {
+        if(localStorageCart){
+          let CartData = JSON.parse(localStorageCart);
+          setCart(CartData);
+        }
+
+    }, []);
     
 
     return(
         <div>
             <AsideBar/>
-            <div className="team-member">Team Member Dashboard</div>
+            <div className="team-member"><ImHome3/>   Team Member Dashboard</div>
             <div className="products">
                 <div className="product-card green ">
-                    {/* <div><FaComment /></div> */}
-                   <p>Total Post ({products.length})</p>
+                   <p>Total Product ({products.length})</p>
                 </div>
 
                 <div className="product-card purple">
-                    {/* <div><FaUsers/></div> */}
                     <p>Total Users ({AdminUsers.length})</p>
                 </div>
 
                 <div className="product-card blue">
-                    {/* <div><FaComment /></div> */}
-                    <p>Total Comments ({comment.length})</p>
-                    {/* <p>Total Comments ({postsData.reduce((total, post) => total + post.comments.length, 0)})</p> */}
+                    <p>Total Product in Cart ({cart.length})</p>
                 </div>
             </div>
 
             <div className="product-list">
                 <table>
-                    <th>Post Image</th>
+                    <th>Product Image</th>
                     <th>Title</th>
-                    <th>Tag</th>
+                    <th>Category</th>
                     <th>Description</th>
                 </table>
                 {loading === true ? (
@@ -101,8 +101,8 @@ function Dashboard (){
                         
 
                         <td><img src={post.image} alt="image" /></td>
-                        <td>{post.title  ?? ''}</td>
-                        <td>{post.tag?.title ?? ''}</td>
+                        <td>{post.name  ?? ''}</td>
+                        <td>{post.category?.title ?? ''}</td>
                         <td>{post.description}</td>
                         
                     </tr>

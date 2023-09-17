@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
-import AsideBar from "../pages/AsideBar";
+import { useEffect, useState } from 'react';
+import AsideBar from "./AsideBar";
 
 function UsersWithPosts() {
     const [usersWithPosts, setUsersWithPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:3007/users-with-posts")
+        fetch("http://localhost:3008/users-with-products")
             .then((resp) => resp.json())
             .then((data) => {
                 console.log(data); 
@@ -25,12 +25,12 @@ function UsersWithPosts() {
                     
                     <div key={user._id} className="admin-users user-post-username">
                          {/* {user.username ? <h2>{user?.username}</h2> : <h2>Unknown User</h2>} */}
-                          <h2>User: {user.username}</h2> <h2>Post: {user.post.length}</h2> 
+                          <h2>User: {user.name}</h2> <h2>Post: {user.product.length}</h2> 
                         <ul className='grid'>
-                            {user.post.map((post) => (
+                            {user.product.map((post) => (
                                 <li key={post._id} >
                                     <div className='users-post'>
-                                    <img src={post.image} alt="image" className="product-img" />
+                                    <img src={post.image} alt="" className="product-img" />
                                     <h3>{post.title ?? ''}</h3>
                                     <p>{post.description}</p>
                                     </div>
