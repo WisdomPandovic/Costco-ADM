@@ -13,6 +13,7 @@ import {SiPostman} from "react-icons/si";
 import { CostcoContext } from '../Context/CostcoContext';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavImg from "../../image//20220624_093652.jpg"
 
 function AsideBar(){
     const {isLoggedIn, setIsLoggedIn} = useContext(CostcoContext)
@@ -48,13 +49,32 @@ const handleNewPostClick = (route) => {
           console.error('Error while handling logout:', error);
         }
       };
+      let rawData = localStorage.getItem("CostcoAdmin_USER")
+    //   let localData = JSON.parse(rawData)
+      const userDataString = rawData
+    //   const userDataString = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDE5YWUzOTYxNzU0N2Y5YTk2OGNlMSIsIm5hbWUiOiJPa2lQZXRlciIsImVtYWlsIjoib2tpcGV0ZXJAaG90bWFpbC5jb20iLCJwaG9uZU51bWJlciI6MTIzNDY3ODkwLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTQ5NDM2NzMsImV4cCI6MTY5NDk1MDg3M30.T8JmzDpw55VQB7oxdPn3ZseGLu4zn9PRhhGeZFs0UzY";
+
+const decodedPayload = JSON.parse(atob(userDataString.split('.')[1]));
+
+console.log(decodedPayload.name); // Output: Okipeer
+const userName = decodedPayload.name;
+
+// Use the userName in your template string
+const greeting = `${userName}!`;
+
+console.log(greeting);
+
+
     return(
         <div>
             <aside className="aside-bar">
-                <div>
+                <div className='admUser-pro'>
                     <div>
-                    {/* {` ${JSON.parse(localStorage.getItem('CostcoAdmin_USER')).data.name}!. `} */}
+                    <img src={NavImg} alt=""/>
+                    <p>{`${userName} `}</p>
                     </div>
+
+                    <div><button>User Menu</button></div>
                 </div>
                 <div className="dashboard">
                     <div className="aside-links">

@@ -49,11 +49,16 @@
 }
 
 aside{
-  background-color: #0a0a52;
+ /* background-color: rgba( 92, 59, 119, 255 ); */
   float: left;
   width: 20%;
   height: 100vh;
   position: fixed;
+  background-image: url(./image/20220522_223226.jpg);
+  background-size: cover; 
+  background-attachment: fixed; 
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
 .aside-bar-link{
@@ -86,9 +91,32 @@ aside{
 
 .dashboard{
   /* background-color: darkgrey; */
-  background-color: #0a0a52;
+  background-color: rgba( 92, 59, 119, 255 );
   height: 100vh;
   margin: 20px 0px;
+}
+
+.admUser-pro{
+  margin: 20px 40px;
+}
+
+.admUser-pro p{
+  color: #fff;
+  margin: 20px 0px;
+  font-size: 14px;
+}
+
+.admUser-pro img{
+  width: 100%;
+  height: 150px;
+  border-radius: 100px;
+}
+
+.admUser-pro button{
+  margin: 20px 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 
