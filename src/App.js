@@ -57,6 +57,7 @@ import UpdatePost from './components/pages/UpdatePost';
 import Category from './components/pages/Category';
 import Signin from './components/pages/Signin';
 import Signup from './components/pages/Signup';
+import Notification from './components/pages/Notification';
 import UsersWithProducts from './components/pages/UsersWithProducts';
 import CostcoProvider from "./components/Context/CostcoContext";
 import { CostcoContext } from './components/Context/CostcoContext';
@@ -95,6 +96,7 @@ function App() {
             <Route path='/signup' element={<Signup />} />
             <Route path='/usersWithProducts' element={<UsersWithProducts />} />
             <Route path='/' element={<Signin />} />
+            <Route path='/notification' element={<Notification />} />
           </Routes>
         </BrowserRouter>
       </CostcoProvider>

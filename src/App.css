@@ -2,15 +2,41 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Fjalla one', sans-serif;
+  font-family: Arial,Helvetica,Helvetica Neue,Roboto,georgia,serif;
+}
+
+.flexxy{
+  display: flex;
+  justify-content: space-around;
+}
+
+.dash-icon{
+  font-size: 20px;
 }
 
 .team-member{
   width: 80%;
-  /* margin: 10px auto; */
   padding: 10px 10px;
   float: right;
-  background-color:#5f5f5f;
+  background-color: #281935;
+  color: #fff;
+}
+
+.checkout{
+  width: 80%;
+  padding: 10px 10px;
+  float: right;
+  background-color: #281935;
+  color: #f3a746;
+}
+
+.bevol{
+  background-color: rgba( 92, 59, 119, 255 );
+  color: #fff;
+}
+
+.mile{
+  background-color: #281935;
 }
 
 .products{
@@ -18,19 +44,16 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   width: 80%;
-  /* margin: 20px auto; */
   float: right;
   padding: 20px 10px;
-  /* background-color: #5f5f5f; */
-  /* background-color: #0a0a52; */
+  background-color: #281935;
 }
 
 .product-card{
-  /* box-shadow: 2px 2px 10px rgba(202, 202, 202, 0.5); */
-  border-radius: 10px;
-  padding: 10px;
+  padding: 30px;
   height: 100px;
   font-size: 20px;
+  color: #f3a746;
 }
 
 .green{
@@ -49,7 +72,6 @@
 }
 
 aside{
- /* background-color: rgba( 92, 59, 119, 255 ); */
   float: left;
   width: 20%;
   height: 100vh;
@@ -84,16 +106,13 @@ aside{
 }
 
 .aside-flex a{
-
   text-decoration: none;
   color: white;
 }
 
 .dashboard{
-  /* background-color: darkgrey; */
   background-color: rgba( 92, 59, 119, 255 );
   height: 100vh;
-  margin: 20px 0px;
 }
 
 .admUser-pro{
@@ -104,6 +123,82 @@ aside{
   color: #fff;
   margin: 20px 0px;
   font-size: 14px;
+}
+
+.barPopup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  color: #fff; 
+  background-color: rgba( 92, 59, 119, 255 );
+}
+
+.popup{
+  background-color: rgba( 92, 59, 119, 255 );
+  color: #fff;
+}
+
+.popup-flex{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 0px;
+}
+
+.popup-link{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px;
+  gap: 40px;
+}
+
+.popup-welcomeX{
+  cursor: pointer;
+  color: red;
+}
+
+.popup-icon{
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.popup-icon2{
+  font-size: 15px;
+  color: red;
+}
+
+.popup-icon3{
+  font-size: 15px;
+  color: white;
+}
+
+.notification-bar{
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+}
+
+.notification-bar p{
+background-color: blueviolet;
+border-radius: 20px;
+padding: 5px;
+}
+
+.notification{
+  padding: 10px 0px;
+  /* font-size: 15px; */
+  font-family: "Ubuntu", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.49;
+    color: #c8a9ff;
+    text-align: left;
 }
 
 .admUser-pro img{
@@ -117,6 +212,7 @@ aside{
   cursor: pointer;
   border-radius: 5px;
   padding: 10px;
+  background-image: url(./image/20220522_223226.jpg);
 }
 
 
@@ -133,12 +229,16 @@ aside{
   width: 80%;
   float: right;
   padding: 0px 10px;
+  background-color: #281935;
+  color: #f2f1f3;
 }
 
 .tag-list{
-  width: 70%;
+  width: 80%;
   float: right;
   padding: 0px 10px;
+  background-color: #281935;
+  color: #f2f1f3;
 }
 
 .tag-list button{
@@ -170,13 +270,27 @@ aside{
 
 
 table,  td, th{
-  border: 1px solid black;
+  border: 1px solid #c8a9ff;
   text-align: center;
+}
+
+table, th{
+  /* padding: 20px; */
+  font-weight: 600;
+    font-size: 14px;
+    /* letter-spacing: .5px; */
+    /* text-transform: lowercase; */
+    text-align: center!important;
+    /* color: #22252f; */
+     background-color: rgba( 92, 59, 119, 255 );
 }
 
 td, th{
   width: 200px;
   margin: auto;
+  padding: 10px;
+  font-size: 13px;
+  text-align: center!important;
 }
 
 td button{
@@ -186,9 +300,16 @@ td button{
 .admin-users{
   text-align: center;
   font-size: 30px;
-  margin: 20px 0px;
+  padding: 20px 0px;
   width: 80%;
   float: right;
+  background-color: #281935;
+  color: #f2f1f3;
+}
+
+.table p{
+  background-color: #f3a746;
+  border-radius: 2px;
 }
 
 .form{
@@ -210,7 +331,13 @@ td button{
   width: 80%;
   margin:  auto;
   padding: 10px 10px;
-  float:right
+  float:right;
+  background-color: #281935;
+  color: #f2f1f3;
+}
+
+.form-content label{
+  color: #f3a746;
 }
 
 .form-content div{
@@ -224,6 +351,8 @@ td button{
   padding: 10px;
   outline: 1px solid #587af7;
   border-radius: 5px;
+  background-color: #281935;
+  color: #f2f1f3;
 }
 
 .form-content div input:focus, .form-content div select:focus, .form-content div textarea:focus{
@@ -270,12 +399,15 @@ td button{
 .product-list{
   width: 80%;
   float: right;
-  /* padding: 0px 10px; */
-  background-color: white;
+  padding: 0px 10px;
+  /* background-color: white; */
+  background-color: #281935;
 }
 
 .product-list table{
   width: 100%;
+  background-color: rgba( 92, 59, 119, 255 );
+  color: #dedede;
 }
 
 .product-list img{
@@ -288,10 +420,12 @@ td button{
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   width: 80%;
-  margin: 20px auto;
+  /* margin: 20px auto; */
   float: right;
   padding: 0px 10px;
   text-align: center;
+  background-color: #281935;
+  color: #f2f1f3;
 }
 
 .adm-products img{
@@ -304,20 +438,14 @@ td button{
   cursor: pointer;
 }
 
-.product-card{
-  box-shadow: 2px 2px 10px rgba(202, 202, 202, 0.5);
-  border-radius: 10px;
-  padding: 10px;
-  height: 100px;
-}
-
 nav{
   width: 80%;
   float: right;
   padding: 0px 10px;
   /* background-color: #EEEEEE; */
   /* background-color: #5f5f5f; */
-  background-color: #0a0a52;
+  /* background-color: #0a0a52; */
+  background-color: #281935;
 }
 
 .flex{
@@ -376,7 +504,9 @@ select option Link{
   width: 80%;
   margin:  auto;
   padding: 10px 10px;
-  float:right
+  float:right;
+  background-color: #281935;
+  color: #f2f1f3;
 }
 
 .form-content-tag div{
@@ -390,6 +520,8 @@ select option Link{
   padding: 10px;
   outline: 1px solid #587af7;
   border-radius: 5px;
+  background-color: rgba( 92, 59, 119, 255 );
+  color: #dedede;
 }
 
 .form-content-tag div input:focus, .form-content-tag div select:focus, .form-content-tag div textarea:focus{

@@ -15,9 +15,31 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavImg from "../../image//20220624_093652.jpg"
 
+import {FaShoppingCart} from 'react-icons/fa';
+import {RiAccountCircleLine} from 'react-icons/ri';
+import {MdLocationPin} from 'react-icons/md';
+import {BsBoxSeam} from 'react-icons/bs';
+import {CiSettings} from 'react-icons/ci';
+import {AiOutlineIdcard} from 'react-icons/ai';
+import {CiViewList} from 'react-icons/ci';
+import {MdPayment} from 'react-icons/md';
+import {CgUserList} from 'react-icons/cg';
+import {GrMapLocation} from 'react-icons/gr';
+import {MdCardMembership} from 'react-icons/md';
+import {ImPaypal} from 'react-icons/im';
+import {FaSignOutAlt} from 'react-icons/fa';
+import {IoNotificationsSharp} from 'react-icons/io5';
+import {RiMessage2Fill} from 'react-icons/ri';
+import {FaBars} from 'react-icons/fa';
+
+import Notification from "../pages/Notification";
+
+
 function AsideBar(){
     const {isLoggedIn, setIsLoggedIn} = useContext(CostcoContext)
     const navigate = useNavigate()
+    const [isOpen, setIsOpen] = useState(false);
+    const [isBarOpen, setIsBarOpen] = useState(false);
 
 const handleNewPostClick = (route) => {
     if (isLoggedIn) {
@@ -74,8 +96,27 @@ console.log(greeting);
                     <p>{`${userName} `}</p>
                     </div>
 
-                    <div><button>User Menu</button></div>
+                    <div onClick={() => setIsOpen(true)}><button>User Menu</button></div>
                 </div>
+                {isOpen && (
+                    <div className='popup'>
+                    <div className='popup-flex'>
+                        <div className='popup-welcome'>Welcome!</div>
+                        <div onClick={() => setIsOpen(false)} className='popup-welcomeX'>X</div>
+                    </div>
+
+                   <div className='popup-link'>
+                       <p><RiAccountCircleLine className='popup-icon' /></p>
+                       <p><BsBoxSeam className='popup-icon'/> </p>
+                       <p><CgUserList className='popup-icon'/></p>
+                       <p><IoNotificationsSharp className='popup-icon'/> </p>
+                       <p><MdPayment className='popup-icon'/> </p>
+                       <p onClick={handleLogout}><FaSignOutAlt className='popup-icon'/></p>
+                   </div><hr></hr>
+                   
+                   </div>
+                )}
+                
                 <div className="dashboard">
                     <div className="aside-links">
                         <div onClick={() => handleNewPostClick("/dashboard")}>
@@ -138,20 +179,29 @@ console.log(greeting);
 
            <nav>
                 <div className='flex'>
-                    <div className='flex-btn'>
-                        {/* <input type='text' placeholder='search'/> */}
-                        {/* <button>
-                        <Link to="/signup" class="aside-bar-link"><GiTeamUpgrade/> Signup</Link></button>
-                        <button>
-                        <Link to="/signin" class="aside-bar-link"><GiTeamUpgrade/> Signin</Link></button> */}
-                        {/* <h2 className='navBar-signin'><Link to="/signin" className='newpost'>Sign In</Link></h2>
-                        <div><button><Link to="/signup" className='newpost'>Sign Up</Link></button></div> */}
-                    </div>
-                    {/* <div><FaUserCheck/></div> */}
                     <div className='log-out'>
-                        <button onClick={handleLogout}>Sign out</button>
+                        {/* <button onClick={handleLogout}>Sign out</button> */}
                     </div>
-                </div>
+
+                    <div className='flex notification-bar'>
+                       <p><IoNotificationsSharp className='popup-icon2'/> </p>
+                       <p><RiMessage2Fill className='popup-icon3'/> </p>
+                       <p onClick={() => setIsBarOpen(true)}><FaBars className='popup-icon3'/> </p>
+                       {isBarOpen && (
+                            <div className='barPopup'>
+                                <div className='popup-flex'>
+                                    <div className='popup-welcome'>Notifications</div>
+                                    <div onClick={() => setIsBarOpen(false)} className='popup-welcomeX'>X</div>
+                                </div>
+
+                                <div className='notification'>
+                                    <Notification/>
+                                </div>
+                   
+                            </div>
+                        )}
+                    </div>
+                </div><hr></hr>
            </nav>
 
         </div>
