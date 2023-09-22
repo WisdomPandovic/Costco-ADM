@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import {MdDelete} from "react-icons/md";
+import {FiEdit3} from "react-icons/fi";
+
 function Category() {
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,8 +20,8 @@ function Category() {
       product: [],
     };
 
-    console.log(user);
-    console.log(userData);
+    // console.log(user);
+    // console.log(userData);
 
     axios
       .post("http://localhost:3008/category", userData)
@@ -56,11 +59,11 @@ function Category() {
       console.error("Error deleting tag:", error);
       // toast.error("An error occurred while deleting the user");
     }
-    console.log(_id)
+    // console.log(_id)
   };
 
   const setData = (data) => {
-    console.log(data);
+    // console.log(data);
   };
 
   return (
@@ -103,10 +106,10 @@ function Category() {
                   <td key={tag._id} className="flexv">
                     <div className="tag-edit">
                       <Link to={`/updateTag/${tag._id}`}>
-                        <button onClick={() => setData()}>Edit</button>
+                        <button onClick={() => setData()}><FiEdit3 className="edit-icon"/></button>
                       </Link>
                     </div>
-                    <button onClick={() => onDelete(tag._id)}>Delete</button>
+                    <button onClick={() => onDelete(tag._id)}><MdDelete className="delete-icon"/></button>
                   </td>
                 </tr>
               ))}

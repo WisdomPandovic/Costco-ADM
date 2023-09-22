@@ -1,32 +1,20 @@
 import {Link} from 'react-router-dom';
 import {ImHome3} from 'react-icons/im';
-import {FaUserCheck} from "react-icons/fa";
 import {FaUsers} from "react-icons/fa";
 import {RxDashboard} from "react-icons/rx";
-import {GiTeamUpgrade} from "react-icons/gi";
-import {GiOpenedFoodCan} from "react-icons/gi";
-import {FcSearch} from "react-icons/fc";
 import {DiPhonegap} from "react-icons/di";
 import {SiProducthunt} from "react-icons/si";
 import {RiUserStarFill} from "react-icons/ri";
 import {SiPostman} from "react-icons/si";
 import { CostcoContext } from '../Context/CostcoContext';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavImg from "../../image//20220624_093652.jpg"
 
-import {FaShoppingCart} from 'react-icons/fa';
 import {RiAccountCircleLine} from 'react-icons/ri';
-import {MdLocationPin} from 'react-icons/md';
 import {BsBoxSeam} from 'react-icons/bs';
-import {CiSettings} from 'react-icons/ci';
-import {AiOutlineIdcard} from 'react-icons/ai';
-import {CiViewList} from 'react-icons/ci';
 import {MdPayment} from 'react-icons/md';
 import {CgUserList} from 'react-icons/cg';
-import {GrMapLocation} from 'react-icons/gr';
-import {MdCardMembership} from 'react-icons/md';
-import {ImPaypal} from 'react-icons/im';
 import {FaSignOutAlt} from 'react-icons/fa';
 import {IoNotificationsSharp} from 'react-icons/io5';
 import {RiMessage2Fill} from 'react-icons/ri';
@@ -36,7 +24,7 @@ import Notification from "../pages/Notification";
 
 
 function AsideBar(){
-    const {isLoggedIn, setIsLoggedIn} = useContext(CostcoContext)
+    const {isLoggedIn, setIsLoggedIn, adminUserID, userName, AdminUserID} = useContext(CostcoContext)
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false);
     const [isBarOpen, setIsBarOpen] = useState(false);
@@ -50,10 +38,6 @@ const handleNewPostClick = (route) => {
       navigate("/");
     }
   };
-
-  // const handleLogin = () => {
-  //   setIsLoggedIn(true);
-  // };
 
     const handleLogout = () => {
         try {
@@ -71,29 +55,18 @@ const handleNewPostClick = (route) => {
           console.error('Error while handling logout:', error);
         }
       };
-      let rawData = localStorage.getItem("CostcoAdmin_USER")
-    //   let localData = JSON.parse(rawData)
-      const userDataString = rawData
-    //   const userDataString = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDE5YWUzOTYxNzU0N2Y5YTk2OGNlMSIsIm5hbWUiOiJPa2lQZXRlciIsImVtYWlsIjoib2tpcGV0ZXJAaG90bWFpbC5jb20iLCJwaG9uZU51bWJlciI6MTIzNDY3ODkwLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTQ5NDM2NzMsImV4cCI6MTY5NDk1MDg3M30.T8JmzDpw55VQB7oxdPn3ZseGLu4zn9PRhhGeZFs0UzY";
-
-const decodedPayload = JSON.parse(atob(userDataString.split('.')[1]));
-
-console.log(decodedPayload.name); // Output: Okipeer
-const userName = decodedPayload.name;
-
-// Use the userName in your template string
-const greeting = `${userName}!`;
-
-console.log(greeting);
-
-
+   
+const setData = (data) => {
+    // console.log(data)
+  
+}
     return(
         <div>
             <aside className="aside-bar">
                 <div className='admUser-pro'>
                     <div>
                     <img src={NavImg} alt=""/>
-                    <p>{`${userName} `}</p>
+                    <p>Welcome back, {`${userName} `}</p>
                     </div>
 
                     <div onClick={() => setIsOpen(true)}><button>User Menu</button></div>
@@ -106,12 +79,12 @@ console.log(greeting);
                     </div>
 
                    <div className='popup-link'>
-                       <p><RiAccountCircleLine className='popup-icon' /></p>
+                        <Link to={`/adminUser/${AdminUserID}`}><button onClick={() => setData()}><p><RiAccountCircleLine className='popup-icon' /></p></button></Link>
                        <p><BsBoxSeam className='popup-icon'/> </p>
                        <p><CgUserList className='popup-icon'/></p>
-                       <p><IoNotificationsSharp className='popup-icon'/> </p>
+                       <button onClick={() => setIsBarOpen(true)}><IoNotificationsSharp className='popup-icon'/> </button>
                        <p><MdPayment className='popup-icon'/> </p>
-                       <p onClick={handleLogout}><FaSignOutAlt className='popup-icon'/></p>
+                       <div  ><button onClick={handleLogout}><FaSignOutAlt className='popup-icon'/></button></div>
                    </div><hr></hr>
                    
                    </div>
@@ -120,7 +93,7 @@ console.log(greeting);
                 <div className="dashboard">
                     <div className="aside-links">
                         <div onClick={() => handleNewPostClick("/dashboard")}>
-                            <Link to="/dashboard" class="aside-bar-link nav-flex" >
+                            <Link to="/dashboard" className="aside-bar-link nav-flex" >
                                 <ImHome3/>
                                 <p>Dashboard</p> 
                             </Link>
@@ -128,7 +101,7 @@ console.log(greeting);
                     </div><hr/>
                     <div className="aside-links">
                         <div onClick={() => handleNewPostClick("/product")}>
-                            <Link to="/product" class="aside-bar-link nav-flex" >
+                            <Link to="/product" className="aside-bar-link nav-flex" >
                                 <DiPhonegap/>
                                 <p>View Product</p>
                             </Link>  
@@ -136,7 +109,7 @@ console.log(greeting);
                     </div><hr/>
                     <div >
                         <div onClick={() => handleNewPostClick("/users")}>
-                            <Link to="/users" class="aside-bar-link nav-flex">
+                            <Link to="/users" className="aside-bar-link nav-flex">
                                 <FaUsers/> 
                                 <p>Users</p>
                             </Link>
@@ -144,7 +117,7 @@ console.log(greeting);
                     </div><hr/>
                     <div >
                         <div onClick={handleNewPostClick}>
-                            <Link to="/createProduct" class="aside-bar-link nav-flex">
+                            <Link to="/createProduct" className="aside-bar-link nav-flex">
                                 <SiProducthunt/> 
                                 <p>Create Product</p>
                             </Link>
@@ -152,7 +125,7 @@ console.log(greeting);
                     </div><hr/>
                     <div >
                         <div onClick={handleNewPostClick}> 
-                            <Link to="/createUsers" class="aside-bar-link nav-flex">
+                            <Link to="/createUsers" className="aside-bar-link nav-flex">
                                 <RiUserStarFill/> 
                                 <p>Create Users</p>
                             </Link>
@@ -160,7 +133,7 @@ console.log(greeting);
                     </div><hr/>
                     <div >
                         <div onClick={handleNewPostClick}>
-                            <Link to="/category" class="aside-bar-link nav-flex">
+                            <Link to="/category" className="aside-bar-link nav-flex">
                                 <RxDashboard/> 
                                 <p>Create Category</p>
                             </Link>
@@ -168,7 +141,7 @@ console.log(greeting);
                     </div><hr/>
                     <div >
                         <div onClick={handleNewPostClick}>
-                            <Link to="/usersWithProducts" class="aside-bar-link nav-flex">
+                            <Link to="/usersWithProducts" className="aside-bar-link nav-flex">
                                 <SiPostman/> 
                                 <p>Users Products</p>
                             </Link>
@@ -179,8 +152,12 @@ console.log(greeting);
 
            <nav>
                 <div className='flex'>
-                    <div className='log-out'>
+                    <div className=''>
                         {/* <button onClick={handleLogout}>Sign out</button> */}
+                        <form className="search-form">
+                             <input type="text" placeholder="Search"/>
+                             <button type="submit" className="search-button">Search</button>
+                        </form>
                     </div>
 
                     <div className='flex notification-bar'>

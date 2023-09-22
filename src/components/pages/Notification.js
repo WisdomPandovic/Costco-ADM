@@ -5,7 +5,6 @@ function Notification  ()  {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    // Fetch notifications from the backend
     axios.get('http://localhost:3008/api/notifications')
       .then((response) => {
         setNotifications(response.data);
@@ -18,11 +17,12 @@ function Notification  ()  {
   return (
     <div>
       {/* <h1>Notifications</h1> */}
-      <div>
+      <div >
         {notifications.map((notification) => (
-          <div key={notification._id}>
+          <div key={notification._id} >
+            <div  className='notify'>
             <div>{notification.message}</div>
-            <div>Timestamp: {new Date(notification.timestamp).toLocaleString()}</div> <hr></hr>
+            <div> {new Date(notification.timestamp).toLocaleString()}</div> <hr></hr></div>
           </div>
         ))}
       </div>

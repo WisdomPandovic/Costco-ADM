@@ -21,8 +21,8 @@ function CreateUsers() {
       product:[]
     };
 
-    console.log(user);
-    console.log(userData);
+    // console.log(user);
+    // console.log(userData);
 
     axios
       .post("http://localhost:3008/admin-users", userData)

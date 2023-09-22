@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import {CostcoContext } from '../Context/CostcoContext';
 import { useNavigate } from 'react-router-dom';
+import {MdDelete} from "react-icons/md";
 function Post (){
 
     const [products, setProducts] = useState([]);
@@ -86,9 +87,6 @@ function Post (){
         fetch("http://localhost:3008/products")
         .then((resp) => resp.json())
         .then((data) => {
-            // const filterCategory = data.filter ((prod) => {
-            //     return prod.category === "Toys"
-            // } )
             const sortedData = data.sort((a, b) => new Date (b.date) - new Date(a.date));
             setProducts(sortedData);
             setLoading(false);
@@ -135,7 +133,7 @@ function Post (){
                                <p>{product.quantity}</p>
                                <div key={product._id}>
                                      {/* <Link to={`/updatePost/${product._id}`}><button onClick={() => setData(product)}>Edit</button></Link> */}
-                                    <button onClick={() => onDelete(product._id)}>Delete</button>
+                                    <button onClick={() => onDelete(product._id)}><MdDelete className="delete-icon"/></button>
                                  
                                 </div>
                                
@@ -144,6 +142,7 @@ function Post (){
         
                        ))
                 )}
+
                 <ToastContainer />
             </div>
 

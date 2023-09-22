@@ -15,7 +15,7 @@ function CreatePost() {
     const [image, setImage] = useState("");
 
     const {userID, setUserID} = useContext(CostcoContext)
-    console.log(userID)
+    // console.log(userID)
     const navigate = useNavigate()
 
    
@@ -38,12 +38,12 @@ function CreatePost() {
      formdata.append('price', price);
      formdata.append('quantity', quantity);
      formdata.append('image', image);
-     console.log('userID:', userID);
+    //  console.log('userID:', userID);
      formdata.append('user', userID);
-     console.log("form data",formdata.get('image'));
+    //  console.log("form data",formdata.get('image'));
 
       // Log the token before making the request
-  console.log("Token to be sent:", formdata.get('user'));
+  // console.log("Token to be sent:", formdata.get('user'));
      
   console.log('Token Value:', userID);
 

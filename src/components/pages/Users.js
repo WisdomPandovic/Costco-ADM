@@ -5,6 +5,8 @@ import {Link} from "react-router-dom"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import {MdDelete} from "react-icons/md";
+import {FiEdit3} from "react-icons/fi";
 
 function formatDate(timestamp) {
     if (!timestamp) {
@@ -91,10 +93,10 @@ function Users(){
                                         <div className="tag-edit">
 
                                            <Link to={`/updateUsers/${user._id}`}>
-                                                <button onClick={() => setData()}>Edit</button>
+                                                <button onClick={() => setData()}><FiEdit3 className="edit-icon"/></button>
                                            </Link>
                                         </div>
-                                        <button onClick={() => onDelete(user._id)}>Delete</button>
+                                        <button onClick={() => onDelete(user._id)}><MdDelete className="delete-icon"/></button>
                                     </td>
                                 </tr>
                             ))}

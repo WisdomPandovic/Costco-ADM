@@ -41,9 +41,6 @@ function Signup(){
                 console.log(resp.data)
                 setUser(resp.data)
                 .catch((error) => {console.error(error);})
-               
-                
-             
             })
             
             setErr(false);
@@ -55,7 +52,6 @@ function Signup(){
 
      return(
         <div className="reg-bk">
-            <div className='back'><Link to="/" className='td'><BsArrowLeftShort/>back to Imgur</Link></div>
             <div className='reg-text'><h2>Costco</h2>  <p>Admin</p></div>
            
             <div className="form-heading4">
@@ -98,11 +94,6 @@ function Signup(){
                     
                     <input type="text" value={user.phoneNumber} placeholder='Phone Number' onChange={(e) => setUser({...user, phoneNumber: e.target.value})}/>
                     {err === true && user.phoneNumber === "" ? <span>Phone number required</span> : null}
-                </div>
-
-                <div className='form-text'>
-                    <div><p>Standard message and data rates may apply.</p></div>
-                    <div><h2>Why do I have to verify my phone?</h2></div>
                 </div>
 
                 <div className=" flexs">

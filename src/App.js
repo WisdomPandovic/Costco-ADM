@@ -43,7 +43,7 @@
 
 // export default App;
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Dashboard from './components/pages/Dashboard';
@@ -58,9 +58,9 @@ import Category from './components/pages/Category';
 import Signin from './components/pages/Signin';
 import Signup from './components/pages/Signup';
 import Notification from './components/pages/Notification';
+import AdminUser from './components/pages/AdminUser'
 import UsersWithProducts from './components/pages/UsersWithProducts';
 import CostcoProvider from "./components/Context/CostcoContext";
-import { CostcoContext } from './components/Context/CostcoContext';
 
 function App() {
   // const {isLoggedIn} = useContext(CostcoContext)
@@ -97,6 +97,7 @@ function App() {
             <Route path='/usersWithProducts' element={<UsersWithProducts />} />
             <Route path='/' element={<Signin />} />
             <Route path='/notification' element={<Notification />} />
+            <Route path='/adminUser/:_id' element={<AdminUser />} />
           </Routes>
         </BrowserRouter>
       </CostcoProvider>

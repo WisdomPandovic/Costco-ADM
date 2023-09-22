@@ -10,7 +10,7 @@ function UpdateUsers(){
     const [user, setUser] = useState([]); 
 
     useEffect(() => {
-        fetch("http://localhost:3007/users/" + _id)
+        fetch("http://localhost:3008/users/" + _id)
         .then((resp) => resp.json())
         .then((data) => {
             setUser(data);
@@ -21,7 +21,7 @@ function UpdateUsers(){
 
     const updateUser = (e) => {
         e.preventDefault();
-        axios.put("http://localhost:3007/users/" + _id, user)
+        axios.put("http://localhost:3008/users/" + _id, user)
         .then(res => {
             alert("Data update successfull !!!");
             navigate("/users");
@@ -33,7 +33,7 @@ function UpdateUsers(){
             <form className="form-content" onSubmit={updateUser}>
                 <div className="form-control">
                     <label htmlFor="first_name">Username</label>
-                    <input type="text" value={user.username} onChange={(e) => setUser({...user, username: e.target.value})}/>
+                    <input type="text" value={user.name} onChange={(e) => setUser({...user, username: e.target.value})}/>
                   
                 </div>
                 <div className="form-control">

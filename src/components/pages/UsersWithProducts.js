@@ -43,5 +43,57 @@ function UsersWithPosts() {
             )}
         </div>
     );
+    // return (
+    //     <div>
+    //         <AsideBar/>
+    //         {loading ? (
+    //             <div className="admin-users">Loading please wait...</div>
+    //         ) : (
+    //             usersWithPosts.map((user) => (
+    //                 <div key={user._id} className="admin-users user-post-username">
+    //                     <table>
+    //                         <thead>
+    //                             <tr>
+    //                                 <th>User</th>
+    //                                 <th>Posts</th>
+    //                             </tr>
+    //                         </thead>
+    //                         <tbody>
+    //                             <tr>
+    //                                 <td>{user.name}</td>
+    //                                 <td>{user.product.length}</td>
+    //                             </tr>
+    //                         </tbody>
+    //                     </table>
+    //                     <ul className='grid'>
+    //                         {user.product.map((post) => (
+    //                             <li >
+    //                                 <table>
+    //                                     <thead>
+    //                                         <tr>
+    //                                             <th>Image</th>
+    //                                             <th>Title</th>
+    //                                             <th>Description</th>
+    //                                         </tr>
+    //                                     </thead>
+    //                                     <tbody>
+    //                                         <tr>
+    //                                             <td>
+    //                                                 <img src={user.image} alt="" className="product-img" />
+    //                                             </td>
+    //                                             <td>{post.title ?? ''}</td>
+    //                                             <td>{post.description}</td>
+    //                                         </tr>
+    //                                     </tbody>
+    //                                 </table>
+    //                             </li>
+    //                        ))} 
+    //                     </ul>
+    //                 </div>
+    //             ))
+    //         )}
+    //     </div>
+    // );
+    
 }
 export default UsersWithPosts;

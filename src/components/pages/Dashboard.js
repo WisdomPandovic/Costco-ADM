@@ -4,11 +4,14 @@ import {ImHome3} from 'react-icons/im';
 import {FaUsers} from "react-icons/fa";
 import {SiProducthunt} from "react-icons/si";
 import {FaShoppingCart} from 'react-icons/fa';
+import Map from '../Map';
 
 function Dashboard (){
 
     const [AdminUsers, setAdminUsers] = useState([]);
     const [products, setProducts] = useState([]);
+    const [CartItems, setCartItem] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:3008/users")
@@ -25,6 +28,16 @@ function Dashboard (){
         .then((resp) => resp.json())
         .then((data) => {
             setProducts(data);
+        });
+
+        
+    },[]);
+
+    useEffect(() => {
+        fetch("http://localhost:3008/get-cart-items")
+        .then((resp) => resp.json())
+        .then((data) => {
+            setCartItem(data);
         });
 
         
@@ -63,8 +76,6 @@ function Dashboard (){
 
     }, []);
 
-    const [cartItems, setCartItems] = useState([]);
-
 useEffect(() => {
     // Make a GET request to fetch cart items from the backend
     fetch('http://localhost:3008/get-cart-items')
@@ -91,9 +102,14 @@ useEffect(() => {
                     <p>Total Users ({AdminUsers.length})</p>
                 </div>
 
-                <div className="product-card bevol flexxy">
+                {/* <div className="product-card bevol flexxy">
                     <FaShoppingCart className='dash-icon'/> 
                     <p>Total Product in Cart ({cart.length})</p>
+                </div> */}
+
+                <div className="product-card bevol flexxy">
+                    <FaShoppingCart className='dash-icon'/> 
+                    <p>New Orders ({CartItems.length})</p>
                 </div>
             </div>
            <div className="mile">
@@ -129,8 +145,8 @@ useEffect(() => {
             </div>
 
             <div>
-           <div className="checkout">Checkout Items</div>
-           <div className="product-list">
+               <div className="checkout">Orders List</div>
+               <div className="product-list">
            <table className="team-member">
                 <thead>
                     <tr>
@@ -159,8 +175,10 @@ useEffect(() => {
                     ))}
                 </tbody>
            </table>
+               </div>
            </div>
-</div>
+
+
 
             
         </div>
