@@ -70,7 +70,7 @@ function UsersWithPosts() {
         <div>
             <AsideBar/>
             {loading ? (
-                <div className="admin-users">Loading please wait...</div>
+                <div className="admin-users red"><p>Loading please wait...</p></div>
             ) : (
                 <table className="admin-users">
                     <thead>
