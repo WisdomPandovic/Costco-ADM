@@ -60,11 +60,9 @@ function CreatePost() {
       // navigate("/post");
      }
     else {
-      // Handle other status codes (e.g., 400, 401, 500)
       console.error('Error:', response.statusText);
     }
 
-    // To get the response data (if it's JSON)
     const responseData = await response.json();
     console.log('Response data:', responseData);
     //  console.log('response',response.data);

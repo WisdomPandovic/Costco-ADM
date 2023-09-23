@@ -7,7 +7,7 @@ import {SiProducthunt} from "react-icons/si";
 import {RiUserStarFill} from "react-icons/ri";
 import {SiPostman} from "react-icons/si";
 import { CostcoContext } from '../Context/CostcoContext';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavImg from "../../image//20220624_093652.jpg"
 
@@ -21,13 +21,16 @@ import {RiMessage2Fill} from 'react-icons/ri';
 import {FaBars} from 'react-icons/fa';
 
 import Notification from "../pages/Notification";
-
+import {useParams} from "react-router-dom";
+import axios from 'axios';
 
 function AsideBar(){
-    const {isLoggedIn, setIsLoggedIn, adminUserID, userName, AdminUserID} = useContext(CostcoContext)
+    const { login, setLogin, online, setOnline, userID, setUserID, isLoggedIn, setIsLoggedIn, userName, setUserName, AdminUserID, setAdminUserID, } = useContext(CostcoContext)
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false);
     const [isBarOpen, setIsBarOpen] = useState(false);
+    const { _id } = useParams();
+    const [AvatarUrl, setAvatarUrl] = useState([]); 
 
 const handleNewPostClick = (route) => {
     if (isLoggedIn) {
@@ -60,12 +63,31 @@ const setData = (data) => {
     // console.log(data)
   
 }
+
+
+useEffect(() => {
+
+    const _id = AdminUserID
+    fetch(`http://localhost:3008/users/${_id}`)
+    .then((resp) => resp.json())
+    .then((data) => {
+        console.log(data);
+        const avatarUrl = data.avatar;
+        setAvatarUrl(avatarUrl);
+        console.log(AvatarUrl)
+    });
+
+    
+},[]);
+
     return(
         <div>
             <aside className="aside-bar">
                 <div className='admUser-pro'>
                     <div>
-                    <img src={NavImg} alt=""/>
+                    {/* {AvatarUrl && <img src={AvatarUrl} alt="Avatar" /> } */}
+                    <img src={AvatarUrl} alt="Avatar" onError={(e) => console.error("Error loading image", e)} />
+
                     <p>Welcome back, {`${userName} `}</p>
                     </div>
 

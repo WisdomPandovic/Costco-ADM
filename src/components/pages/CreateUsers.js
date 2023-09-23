@@ -1,76 +1,80 @@
-import AsideBar from "../pages/AsideBar";
-import { useState } from "react";
-import axios from "axios";
+import AsideBar from "./AsideBar"
+import { useState, useEffect, useContext } from "react";
+import { CostcoContext } from '../Context/CostcoContext';
+import { useNavigate } from 'react-router-dom';
+// import axios from "axios";
 
 function CreateUsers() {
-  const [user, setUser] = useState({
-    name: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
-  });
+    
+   
+    const [name, setName] =useState("");
+    const [phoneNumber, setphoneNumber] = useState("");
+    const [email, setEmail] = useState("");
+    const [avatar, setAvatar] = useState("");
+    const [password, setPassword] = useState("");
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    const userData = {
-      name: user.name,
-      phoneNumber: user.phoneNumber,
-      email: user.email,
-      password: user.password,
-      membershipNumber: user.membershipNumber,
-      product:[]
-    };
+    const check =async() => {
+     let formdata = new FormData()
+     
+     formdata.append('name', name);
+     formdata.append('phoneNumber', phoneNumber);
+     formdata.append('email', email);
+     formdata.append('avatar', avatar);
+     formdata.append('password', password);
+   
+     let response = await fetch("http://localhost:3008/admin-users",{
+      method:"Post",
+      body:formdata,
+     
+     });
+     if(response.status === 200){
+      alert("User created");
+      // navigate("/post");
+     }
+    else {
+      console.error('Error:', response.statusText);
+    }
 
-    // console.log(user);
-    // console.log(userData);
+    const responseData = await response.json();
+    console.log('Response data:', responseData);
+    }
 
-    axios
-      .post("http://localhost:3008/admin-users", userData)
-      .then((res) => {
-        alert("successful")
-        setUser({
-             name: "",
-             phoneNumber: "",
-             email: "",
-             password: "",
-             membershipNumber: "",
-         });
-      })
-      .catch((err) => {
-       console.log(err.response.data || "Code 500: Internal Server Error")
-      })
-      
-  };
-  return (
+
+    return (
     <div>
-      <AsideBar />
-      <form className="form-content" onSubmit={submitForm}>
-        <div className="form-control">
-          <label htmlFor="first_name">Name</label>
-          <input type="text" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })}/>
-        </div>
+      <AsideBar/>
+      <form onSubmit={(e)=>{e.preventDefault();}} className="form-content"  >
+      
+          <div className="form-control" >
+            <label htmlFor="">Name</label>
+            <input type="text" id="name" name="name" onChange={(e)=>setName(e.target.value)} />
+          </div>
+          
+          <div className="form-control">
+            <label htmlFor="">Email</label>
+            <input type="text" id="email" name="email"  onChange={(e)=>setEmail(e.target.value)}/>
+          </div>
 
-        <div className="form-control">
-          <label htmlFor="phone">Phone Number</label>
-          <input type="text" value={user.phoneNumber} onChange={(e) => setUser({ ...user, phoneNumber: e.target.value })}/>
-        </div>
+          <div className="form-control">
+            <label htmlFor="">Phone Number</label>
+            <input type="text" id="phonemunber" name="phonenumber"  onChange={(e)=>setphoneNumber(e.target.value)}/>
+          </div>
 
-        <div className="form-control">
-          <label htmlFor="email">Email</label>
-          <input type="text" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })}/>
-        </div>
+          <div className="form-control">
+            <label htmlFor="">Password</label>
+            <input type="text" id="password" name="password"  onChange={(e)=>setPassword(e.target.value)}/>
+          </div>
 
-        <div className="form-control">
-          <label htmlFor="password">Password</label>
-          <input type="text" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })}/>
-        </div>
-        
-        <div className="form-btn">
-          <button>Submit</button>
-        </div>
+          <div className="form-control">
+            <label htmlFor="">Avatar</label>
+            <input type="file" id="avatar" name="avatar" onChange={(e)=>setAvatar(e.target.files[0])} />
+          </div>
+       
+          <div className="form-btn">
+            <button onClick={check}>Submit</button>
+          </div>
       </form>
     </div>
   );
 }
-
 export default CreateUsers;

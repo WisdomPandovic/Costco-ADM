@@ -17,8 +17,8 @@ import { ToastContainer } from 'react-toastify';
 
 function Signin(){
 
-    const {userID, setUserID, setOnline, online, setIsLoggedIn,setUserName } = useContext(CostcoContext)
-
+    const {userID, setUserID, setOnline, online, setIsLoggedIn,setUserName, AdminUserID } = useContext(CostcoContext)
+    const [AvatarUrl, setAvatarUrl] = useState([]); 
     const navigate = useNavigate()
     const [err, setErr] = useState(false);
     const [user, setUser] = useState({
@@ -28,40 +28,83 @@ function Signin(){
     });
     let login = user;
     
-    const submitForm = (e) => {
-        e.preventDefault();
-        if (user.email === "" || user.password === "") {
-          setErr(true);
-        } else {
-          setErr(false);
-          axios.post("http://localhost:3008/admin-login", user)
-            .then((resp) => {
-              if (resp.status === 401 && resp.data.message === 'Unauthorized') {
-                alert("Unauthorized. Please sign in with an admin account.");
-              } else if (resp.data.token) {
-                const newToken = resp.data.token;
-                localStorage.setItem('CostcoAdmin_USER', JSON.stringify(newToken));
-                setOnline(true);
-                setIsLoggedIn(true);
-                setUserID(newToken);
+    // const submitForm = (e) => {
+    //     e.preventDefault();
+    //     if (user.email === "" || user.password === "") {
+    //       setErr(true);
+    //     } else {
+    //       setErr(false);
+    //       axios.post("http://localhost:3008/admin-login", user)
+    //         .then((resp) => {
+    //           if (resp.status === 401 && resp.data.message === 'Unauthorized') {
+    //             alert("Unauthorized. Please sign in with an admin account.");
+    //           } else if (resp.data.token) {
+    //             const newToken = resp.data.token;
+    //             localStorage.setItem('CostcoAdmin_USER', JSON.stringify(newToken));
+    //             setOnline(true);
+    //             setIsLoggedIn(true);
+    //             setUserID(newToken);
                  
-                 const decodedPayload = JSON.parse(atob(newToken.split('.')[1]));
-                 setUserName(decodedPayload.name);
+    //              const decodedPayload = JSON.parse(atob(newToken.split('.')[1]));
+    //              setUserName(decodedPayload.name);
 
-                toast.success("Successfully logged in");
-                navigate("/dashboard");
-              } else {
-                alert("Invalid user. Please sign up.");
-              }
-            })
-            .catch((error) => {
-              console.error(error);
-              alert("An error occurred. Please try again later.");
-            });
-        }
-      };
+    //             toast.success("Successfully logged in");
+    //             navigate("/dashboard");
+    //           } else {
+    //             alert("Invalid user. Please sign up.");
+    //           }
+    //         })
+    //         .catch((error) => {
+    //           console.error(error);
+    //           alert("An error occurred. Please try again later.");
+    //         });
+    //     }
+    //   };
       
+   
+    const submitForm = (e) => {
+      const _id = AdminUserID
+      e.preventDefault();
+      if (user.email === "" || user.password === "") {
+        setErr(true);
+      } else {
+        setErr(false);
+        axios.post("http://localhost:3008/admin-login", user)
+          .then((resp) => {
+            if (resp.status === 401 && resp.data.message === 'Unauthorized') {
+              alert("Unauthorized. Please sign in with an admin account.");
+            } else if (resp.data.token) {
+              const newToken = resp.data.token;
+              localStorage.setItem('CostcoAdmin_USER', JSON.stringify(newToken));
+              setOnline(true);
+              setIsLoggedIn(true);
+              setUserID(newToken);
+               
+               const decodedPayload = JSON.parse(atob(newToken.split('.')[1]));
+               setUserName(decodedPayload.name);
 
+               fetch(`http://localhost:3008/users/${_id}`)
+               .then((resp) => resp.json())
+               .then((data) => {
+                   console.log(data);
+                   const avatarUrl = data.avatar;
+                   localStorage.setItem('CostcoAdmin_Avatar', avatarUrl);
+                   setAvatarUrl(avatarUrl);
+                   console.log(AvatarUrl)
+               });
+
+              toast.success("Successfully logged in");
+              navigate("/dashboard");
+            } else {
+              alert("Invalid user. Please sign up.");
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("An error occurred. Please try again later.");
+          });
+      }
+    };
 
      console.log(userID);
      return(

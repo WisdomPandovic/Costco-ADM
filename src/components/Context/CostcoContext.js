@@ -9,34 +9,47 @@ function CostcoProvider(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState(""); 
     const [AdminUserID, setAdminUserID] = useState(""); 
+    const [AdminUserAvatar, setAdminUserAvatar] = useState(""); 
+    // const [AdminUserAvatar, setAdminUserAvatar] = useState(localStorage.getItem('CostcoAdmin_Avatar') || '');
+
 
     useEffect(() => {
         if (localStorage) {
             let rawData = localStorage.getItem("CostcoAdmin_USER");
             if (rawData !== null) {
                 let localData = JSON.parse(rawData);
+                console.log(localData)
                 setUserID(localData);
                 setIsLoggedIn(true);
 
                 const userDataString = rawData;
                 const decodedPayload = JSON.parse(atob(userDataString.split('.')[1]));
-                // console.log(decodedPayload.name)
+                console.log(decodedPayload)
                 setUserName(decodedPayload.name); 
                 setAdminUserID(decodedPayload.id);
-             
+          
+
+          
+                localStorage.setItem('CostcoAdmin_Avatar', decodedPayload.avatar);
             } else {
                 console.error("No data found in local storage for key 'CostcoAdmin_USER'");
             }
         }
     }, []);
 
+
+      
+
     // console.log(userID);
     // console.log(isLoggedIn);
-    // console.log(userName); // You can now access userName here
+    console.log(userName); 
+    console.log(AdminUserID)
+  
 
     return (
         <CostcoContext.Provider value={{
-            login, setLogin, online, setOnline, userID, setUserID, isLoggedIn, setIsLoggedIn, userName, setUserName, AdminUserID, setAdminUserID
+            login, setLogin, online, setOnline, userID, setUserID, isLoggedIn, setIsLoggedIn, userName, setUserName, AdminUserID, setAdminUserID,
+       
         }}>
             {props.children}
         </CostcoContext.Provider>

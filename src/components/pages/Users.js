@@ -70,6 +70,7 @@ function Users(){
                         <thead>
                             <tr>
                                 <th >#</th>
+                                <th>Avatar</th>
                                 <th>Username</th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
@@ -83,6 +84,7 @@ function Users(){
                             {AdminUsers.map((user, index) => (
                                 <tr key={user._id}>
                                     <td >{index + 1}</td>
+                                    <td> <img src={user.avatar} alt="image" className="product-img" /></td>
                                     <td>{user.name}</td>
                                     <td>{user.phoneNumber}</td>
                                     <td>{user.email}</td>

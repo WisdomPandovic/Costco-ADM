@@ -262,7 +262,8 @@ padding: 5px;
 .admUser-pro img{
   width: 100%;
   height: 150px;
-  border-radius: 100px;
+  /* border-radius: 200px; */
+  /* border-radius: 75px; */
 }
 
 .admUser-pro button{
@@ -753,4 +754,8 @@ thead tbody{
   padding: 6px;
   margin: 10px 0px;
   border: none;
+}
+
+.user-table img{
+  width: 100px;
 }
