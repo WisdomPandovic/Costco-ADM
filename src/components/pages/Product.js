@@ -117,7 +117,7 @@ function Post (){
     return(
         <div>
             <AsideBar/>
-            <div className="admin-users">Product</div>
+            <div className="admin-users">Products</div>
             <div className="adm-products">
                 {loading === true ? (
                     <div>Data Loading, please wait....</div>

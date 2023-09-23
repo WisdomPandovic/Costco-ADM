@@ -84,7 +84,7 @@ const setData = (data) => {
                        <p><CgUserList className='popup-icon'/></p>
                        <button onClick={() => setIsBarOpen(true)}><IoNotificationsSharp className='popup-icon'/> </button>
                        <p><MdPayment className='popup-icon'/> </p>
-                       <div  ><button onClick={handleLogout}><FaSignOutAlt className='popup-icon'/></button></div>
+                       <div  ><button onClick={handleLogout}><FaSignOutAlt className='popup-icon red'/></button></div>
                    </div><hr></hr>
                    
                    </div>

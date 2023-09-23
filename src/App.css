@@ -11,7 +11,11 @@
 }
 
 .dash-icon{
-  font-size: 20px;
+  font-size: 30px;
+}
+
+.red{
+  color: red;
 }
 
 .delete-icon{
@@ -51,7 +55,7 @@
 
 .search-form {
   display: flex;
- margin: 15px 0px 0px; 
+  margin: 15px 0px 0px; 
 }
 
 .search-input {
@@ -60,6 +64,10 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-right: 5px;
+}
+
+.search-form input{
+  width: 700px;
 }
 
 .search-button {
@@ -87,10 +95,11 @@
 }
 
 .product-card{
-  padding: 30px;
-  height: 100px;
-  font-size: 20px;
+  padding: 90px 0px ;
+  height: 300px;
+  font-size: 30px;
   color: #f3a746;
+  text-align: center;
 }
 
 .green{
@@ -157,9 +166,10 @@ aside{
 }
 
 .admUser-pro p{
-  color: #fff;
+  color: #f3a746;
   margin: 20px 0px;
   font-size: 14px;
+  font-weight: 400;
   text-align: center;
 }
 
@@ -194,6 +204,12 @@ aside{
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   gap: 40px;
+}
+
+.popup-link button{
+  background-color: rgba( 92, 59, 119, 255 );
+  border: none;
+  color: #ccc;
 }
 
 .popup-welcomeX{
@@ -333,7 +349,7 @@ td, th{
   width: 200px;
   margin: auto;
   padding: 10px;
-  font-size: 13px;
+  font-size: 16px;
   text-align: center!important;
 }
 
@@ -378,6 +394,17 @@ td button{
 .admin-user img{
   width: 345px;
   height: 345px;
+}
+
+.table-data{
+  text-align: center;
+  font-size: 30px;
+  padding: 20px 0px;
+  width: 80%;
+  margin: auto;
+  /* float: right; */
+  background-color: #281935;
+  color: #f2f1f3;
 }
 
 .admin-users{
