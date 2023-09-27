@@ -28,40 +28,6 @@ function Signin(){
     });
     let login = user;
     
-    // const submitForm = (e) => {
-    //     e.preventDefault();
-    //     if (user.email === "" || user.password === "") {
-    //       setErr(true);
-    //     } else {
-    //       setErr(false);
-    //       axios.post("http://localhost:3008/admin-login", user)
-    //         .then((resp) => {
-    //           if (resp.status === 401 && resp.data.message === 'Unauthorized') {
-    //             alert("Unauthorized. Please sign in with an admin account.");
-    //           } else if (resp.data.token) {
-    //             const newToken = resp.data.token;
-    //             localStorage.setItem('CostcoAdmin_USER', JSON.stringify(newToken));
-    //             setOnline(true);
-    //             setIsLoggedIn(true);
-    //             setUserID(newToken);
-                 
-    //              const decodedPayload = JSON.parse(atob(newToken.split('.')[1]));
-    //              setUserName(decodedPayload.name);
-
-    //             toast.success("Successfully logged in");
-    //             navigate("/dashboard");
-    //           } else {
-    //             alert("Invalid user. Please sign up.");
-    //           }
-    //         })
-    //         .catch((error) => {
-    //           console.error(error);
-    //           alert("An error occurred. Please try again later.");
-    //         });
-    //     }
-    //   };
-      
-   
     const submitForm = (e) => {
       const _id = AdminUserID
       e.preventDefault();
@@ -106,10 +72,43 @@ function Signin(){
       }
     };
 
+  //   const submitForm = (e)=>{
+  //     e.preventDefault();
+  //     if(user.email === "" || user.password === ""){
+  //       setErr(true)
+  //     }else{
+  //       setErr(false)
+  //         console.log(user);
+  //         axios.post("http://localhost:3008/admin-login", user).then(res=>{
+  //             console.log(res);
+  //       if(res.data.msg === 'Login successful'){
+  //             console.log(res.data);
+  //             localStorage.setItem('CostcoAdmin_USER', JSON.stringify(res.data.data))
+  //             setOnline(true);
+  //             setIsLoggedIn(true);
+  //             let rawData = localStorage.getItem("CostcoAdmin_USER")
+  //             let localData = JSON.parse(rawData)
+  //             setUserID(localData)
+  //             console.log(userID);
+  //             navigate("/dashboard");
+  //         }else{
+  //             alert("invalid user please signup..")
+              
+  //         }
+        
+          
+  //     })
+  //     }
+      
+      
+
+  // }
+
+
      console.log(userID);
      return(
         <div className="reg-bk">
-            <div className='reg-text'><h2>Costco</h2> <p>Admin</p></div>
+            <div className='reg-text'><h2>Costco Admin</h2></div>
            
             <div className="form-heading4">
                 <h2>Sign In with</h2>
@@ -145,6 +144,7 @@ function Signin(){
 
                 <div className="flexs">
                     <Link to="/signup" className='newpost'><p>need an Account?</p></Link>
+                    <Link to="/forgot-password" className='newpost'><p>Forgot Password?</p> </Link>
                     <button >Sign In</button>
                 </div>
                 <div className="form-btn2">

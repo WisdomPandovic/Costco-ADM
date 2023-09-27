@@ -21,6 +21,7 @@
 .delete-icon{
   color: red;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .edit-icon{
@@ -232,10 +233,6 @@ aside{
   color: white;
 }
 
-/* .notify{
-  background-color: #435c70;
-} */
-
 .notification-bar{
   cursor: pointer;
   display: flex;
@@ -257,13 +254,17 @@ padding: 5px;
     line-height: 1.49;
     color: #c8a9ff;
     text-align: left;
+      overflow-y: auto;
 }
 
 .admUser-pro img{
-  width: 100%;
+  max-width: 100%;
   height: 150px;
-  /* border-radius: 200px; */
-  /* border-radius: 75px; */
+  border-radius: 50% !important;
+  display: inline-block;
+  vertical-align: middle;
+  border-style: none;
+  margin: 0px 80px;
 }
 
 .admUser-pro button{
@@ -305,7 +306,6 @@ padding: 5px;
   background-color: rgba( 92, 59, 119, 255 );
   color: #fff;
   border-radius: 5px;
-  /* border-color: red; */
   padding: 6px;
   margin: 10px 0px;
   cursor: pointer;
@@ -316,7 +316,6 @@ padding: 5px;
   background-color: rgba( 92, 59, 119, 255 );
   color: #fff;
   border-radius: 5px;
-  /* border-color: blue; */
   padding: 6px;
   margin: 10px 0px;
   cursor: pointer;
@@ -324,7 +323,6 @@ padding: 5px;
 
 .flexv{
   display: flex;
-  /* justify-content: space-around; */
   padding: 30px;
   gap: 20px;
 }
@@ -336,13 +334,9 @@ table,  td, th{
 }
 
 table, th{
-  /* padding: 20px; */
   font-weight: 600;
     font-size: 14px;
-    /* letter-spacing: .5px; */
-    /* text-transform: lowercase; */
     text-align: center!important;
-    /* color: #22252f; */
      background-color: rgba( 92, 59, 119, 255 );
 }
 
@@ -367,19 +361,15 @@ td button{
   width: 80%;
   float: right;
   padding: 0px 10px;
-  /* background-color: white; */
-  /* background-color: #281935; */
   background-color: #4e657a;
   height: 100vh;
 }
 
 .milesx{
-  /* background-color: #281935; */
   background-color: #4e657a;
 }
 
 .admin-avatar{
-  /* background-color: rgba( 92, 59, 119, 255 ); */
   padding: 20px;
   background-color: #435c70;
   margin: 20px;
@@ -387,7 +377,6 @@ td button{
 }
 
 .admin-avatar p{
-  /* background-color: rgba( 92, 59, 119, 255 ); */
   padding: 20px 0px;
   color: #fff;
 }
@@ -403,7 +392,6 @@ td button{
   padding: 20px 0px;
   width: 80%;
   margin: auto;
-  /* float: right; */
   background-color: #281935;
   color: #f2f1f3;
 }
@@ -431,7 +419,6 @@ td button{
 .form-control {
   padding: 19px 18px;
   border-radius: 0;
-  /* height: 50px; */
   color: #fff;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
@@ -471,8 +458,7 @@ border-left: #587af7;
 
 .form{
   width: 60%;
-  margin: 20px auto;
-  
+  margin: 20px auto; 
 }
 
 .form-heading{
@@ -599,9 +585,6 @@ nav{
   width: 80%;
   float: right;
   padding: 0px 10px;
-  /* background-color: #EEEEEE; */
-  /* background-color: #5f5f5f; */
-  /* background-color: #0a0a52; */
   background-color: #281935;
 }
 
@@ -614,7 +597,6 @@ nav{
 .flex input{
   padding: 10px;
   border-radius: 3px;
-  /* width: 100%; */
 }
 
 .flex button{
@@ -656,7 +638,6 @@ select option Link{
 
 .form-content-tag{
   display: grid;
-  /* grid-template-columns: repeat(2, 1fr); */
   gap: 20px;
   width: 80%;
   margin:  auto;
@@ -686,7 +667,6 @@ select option Link{
 }
 
 .form-btn-tag{
-  /* margin-top: 10px; */
   width: 10%;
   margin: auto;
 
@@ -728,11 +708,8 @@ thead tbody{
 }
 
 .comment-list {
-  font-size: 20px; /* Adjust the font size for comments as needed */
+  font-size: 20px; 
   list-style-type: none; background-color: #281935;
-  /* color: #fff;
-  border-radius: 5px; */
-  /* border-color: red; */
   padding: 6px;
   margin: 10px 0px;
   border: none;
@@ -740,17 +717,7 @@ thead tbody{
 }
 
 .user-table button{
-  /* background-color: red;
-  color: #fff;
-  border-radius: 5px;
-  border-color: red;
-  padding: 6px;
-  margin: 10px 0px; */
-
   background-color: rgba( 92, 59, 119, 255 );
-  /* color: #fff;
-  border-radius: 5px; */
-  /* border-color: red; */
   padding: 6px;
   margin: 10px 0px;
   border: none;
@@ -758,4 +725,5 @@ thead tbody{
 
 .user-table img{
   width: 100px;
+  height: 100px;
 }

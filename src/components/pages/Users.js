@@ -34,6 +34,7 @@ function Users(){
         fetch("http://localhost:3008/users")
         .then((resp) => resp.json())
         .then((data) => {
+            console.log(data); 
             setAdminUsers(data);
             setLoading(false)
         });

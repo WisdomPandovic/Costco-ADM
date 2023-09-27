@@ -57,7 +57,7 @@ function UsersWithPosts() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:3008/users-with-products")
+        fetch("http://localhost:3008/admin-users-with-products")
             .then((resp) => resp.json())
             .then((data) => {
                 console.log(data); 
@@ -75,7 +75,7 @@ function UsersWithPosts() {
                 <table className="admin-users">
                     <thead>
                         <tr>
-                            <th>Users</th>
+                            <th>Admin</th>
                             <th>Total Products</th>
                         </tr>
                     </thead>
@@ -92,7 +92,7 @@ function UsersWithPosts() {
 
             {usersWithPosts.map((user) => (
                 <div key={user._id} className="admin-users user-post-username">
-                    <h2>User: {user.name}</h2>
+                    <h2>Admin: {user.name}</h2>
                     <table className='table-data'>
                         <thead>
                             <tr>

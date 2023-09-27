@@ -12,6 +12,7 @@ function CreateUsers() {
     const [email, setEmail] = useState("");
     const [avatar, setAvatar] = useState("");
     const [password, setPassword] = useState("");
+    const [role, setRole] = useState("");
 
     const check =async() => {
      let formdata = new FormData()
@@ -21,6 +22,7 @@ function CreateUsers() {
      formdata.append('email', email);
      formdata.append('avatar', avatar);
      formdata.append('password', password);
+     formdata.append('role', role);
    
      let response = await fetch("http://localhost:3008/admin-users",{
       method:"Post",
@@ -69,6 +71,14 @@ function CreateUsers() {
             <label htmlFor="">Avatar</label>
             <input type="file" id="avatar" name="avatar" onChange={(e)=>setAvatar(e.target.files[0])} />
           </div>
+
+          <div className="form-control">
+                    <label htmlFor="role">Role</label>
+                    <select  onChange={(e)=>setRole(e.target.value)}>
+                       <option value="user">User</option>
+                       <option value="admin">Admin</option>
+                    </select>
+                </div>
        
           <div className="form-btn">
             <button onClick={check}>Submit</button>

@@ -14,7 +14,7 @@ function CreatePost() {
     const [quantity, setQuantity] = useState("");
     const [image, setImage] = useState("");
 
-    const {userID, setUserID} = useContext(CostcoContext)
+    const {userID, setUserID, AdminUserID} = useContext(CostcoContext)
     // console.log(userID)
     const navigate = useNavigate()
 
@@ -38,8 +38,8 @@ function CreatePost() {
      formdata.append('price', price);
      formdata.append('quantity', quantity);
      formdata.append('image', image);
-    //  console.log('userID:', userID);
-     formdata.append('user', userID);
+     console.log('userID:', AdminUserID);
+     formdata.append('user', AdminUserID);
     //  console.log("form data",formdata.get('image'));
 
       // Log the token before making the request
@@ -57,7 +57,14 @@ function CreatePost() {
      });
      if(response.status === 200){
       alert("Product created");
-      // navigate("/post");
+      // navigate("/product");
+
+      setName("");
+        setCategory("");
+        setDescription("");
+        setPrice("");
+        setQuantity("");
+        setImage("");
      }
     else {
       console.error('Error:', response.statusText);

@@ -118,34 +118,41 @@ function Post (){
         <div>
             <AsideBar/>
             <div className="admin-users">Products</div>
-            <div className="adm-products">
+          
+
+
+            <div className="mile">
+                <div className="product-list">
+                <table>
+                    <th>PRODUCT IMAGE</th>
+                    <th>TITLE</th>
+                    <th>CATEGORY</th>
+                    <th>DESCRIPTION</th>
+                </table>
                 {loading === true ? (
-                    <div>Data Loading, please wait....</div>
+                    <div>Loading please wait...</div>
                 ) : (
-                    products.map((product) => (
-                        <div key={product._id} className="adm-product-card" >
-                            <div className="shopComputer-product">
-                               <img src={product.image} alt="image" className="product-img" />
-                               <h2>{product.name ?? ''}</h2>
-                               <p>{product.category?.title ?? ''}</p>
-                               <p>{product.description}</p>
-                               <p>{product.price}</p>
-                               <p>{product.quantity}</p>
-                               <div key={product._id}>
-                                     {/* <Link to={`/updatePost/${product._id}`}><button onClick={() => setData(product)}>Edit</button></Link> */}
-                                    <button onClick={() => onDelete(product._id)}><MdDelete className="delete-icon"/></button>
-                                 
-                                </div>
-                               
-                            </div>
-                        </div>
-        
-                       ))
+
+                  products.map((product) => (
+                        // postsData.map((post) =>(
+                <table >
+                    <tr key={product._id}>
+                        
+
+                        <td><img src={product.image} alt="" /></td>
+                        <td>{product.name  ?? ''}</td>
+                        <td>{product.category?.title ?? ''}</td>
+                        <td>{product.description}</td>
+                        
+                    </tr>
+                </table>
+                    ))
+
                 )}
 
-                <ToastContainer />
+                </div>
             </div>
-
+            <ToastContainer />
         </div>
     )
 }

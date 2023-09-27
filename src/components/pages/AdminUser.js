@@ -37,18 +37,6 @@ function AdminUser (){
             navigate("/dashboard");
         })
     }
-
-    // const updateUser = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         await axios.put("http://localhost:3008/users/" + _id, user);
-    //         toast.success("Data update successful !!!");
-    //         navigate("/dashboard");
-    //     } catch (error) {
-    //         console.error("Error updating user:", error);
-    //         toast.error("An error occurred while updating user");
-    //     }
-    // }
     
 
     const onDelete = async (_id) => {
@@ -87,7 +75,7 @@ function AdminUser (){
             <div className="">
                 <div className="admin-user admin-user-flex">
                     <div className="admin-avatar">
-                        <p>Change Avatar</p>
+                        <p>Avatar</p>
                         <img src={AvatarUrl} alt="Avatar" onError={(e) => console.error("Error loading image", e)} />
                     </div>
 

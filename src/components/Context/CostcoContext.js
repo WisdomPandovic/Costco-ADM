@@ -9,10 +9,8 @@ function CostcoProvider(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState(""); 
     const [AdminUserID, setAdminUserID] = useState(""); 
-    const [AdminUserAvatar, setAdminUserAvatar] = useState(""); 
-    // const [AdminUserAvatar, setAdminUserAvatar] = useState(localStorage.getItem('CostcoAdmin_Avatar') || '');
-
-
+    const [AvatarUrl, setAvatarUrl] = useState([]); 
+    
     useEffect(() => {
         if (localStorage) {
             let rawData = localStorage.getItem("CostcoAdmin_USER");
@@ -27,7 +25,6 @@ function CostcoProvider(props) {
                 console.log(decodedPayload)
                 setUserName(decodedPayload.name); 
                 setAdminUserID(decodedPayload.id);
-          
 
           
                 localStorage.setItem('CostcoAdmin_Avatar', decodedPayload.avatar);
@@ -45,11 +42,18 @@ function CostcoProvider(props) {
     console.log(userName); 
     console.log(AdminUserID)
   
+    // useEffect(() => {
+    //     if (localStorage) {
+    //         let AdminAvatar = localStorage.getItem("CostcoAdmin_Avatar");
+    //         let localAvatar = JSON.parse(AdminAvatar)
+    //         setAvatarUrl( localAvatar);
+    //     }
+    // }, []);
 
     return (
         <CostcoContext.Provider value={{
             login, setLogin, online, setOnline, userID, setUserID, isLoggedIn, setIsLoggedIn, userName, setUserName, AdminUserID, setAdminUserID,
-       
+            AvatarUrl, setAvatarUrl
         }}>
             {props.children}
         </CostcoContext.Provider>

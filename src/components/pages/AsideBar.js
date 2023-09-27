@@ -64,7 +64,6 @@ const setData = (data) => {
   
 }
 
-
 useEffect(() => {
 
     const _id = AdminUserID
@@ -79,15 +78,15 @@ useEffect(() => {
 
     
 },[]);
-
+console.log(AvatarUrl)
     return(
         <div>
             <aside className="aside-bar">
                 <div className='admUser-pro'>
                     <div>
                     {/* {AvatarUrl && <img src={AvatarUrl} alt="Avatar" /> } */}
+               
                     <img src={AvatarUrl} alt="Avatar" onError={(e) => console.error("Error loading image", e)} />
-
                     <p>Welcome back, {`${userName} `}</p>
                     </div>
 
@@ -165,7 +164,7 @@ useEffect(() => {
                         <div onClick={handleNewPostClick}>
                             <Link to="/usersWithProducts" className="aside-bar-link nav-flex">
                                 <SiPostman/> 
-                                <p>Users Products</p>
+                                <p>Admin Products</p>
                             </Link>
                         </div>
                     </div><hr/>

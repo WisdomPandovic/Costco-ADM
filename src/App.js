@@ -61,6 +61,7 @@ import Notification from './components/pages/Notification';
 import AdminUser from './components/pages/AdminUser'
 import UsersWithProducts from './components/pages/UsersWithProducts';
 import CostcoProvider from "./components/Context/CostcoContext";
+import ForgotPassword from './components/pages/ForgotPassword';
 
 function App() {
   // const {isLoggedIn} = useContext(CostcoContext)
@@ -98,6 +99,7 @@ function App() {
             <Route path='/' element={<Signin />} />
             <Route path='/notification' element={<Notification />} />
             <Route path='/adminUser/:_id' element={<AdminUser />} />
+            <Route path='/forgot-password' element={<ForgotPassword />} />
           </Routes>
         </BrowserRouter>
       </CostcoProvider>
