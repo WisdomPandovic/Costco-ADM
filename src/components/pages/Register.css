@@ -47,11 +47,22 @@
     cursor: pointer;
   }
   
-  .grid-5{
+.grid-5 {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* Adjusted grid layout */
     gap: 10px;
-  }
+    justify-content: center; /* Center the icons */
+}
+
+.sc-bk {
+    background: #212121;
+    border-radius: 5px;
+    font-size: 21px;
+    margin: 10px;
+    text-align: center; /* Center the icon within its container */
+    padding: 15px 0; /* Adjusted padding for better spacing */
+}
+
   
   .imgur-icons{
     width: 40%;
@@ -66,14 +77,6 @@
     margin: 15px;
     border-bottom-color: #3A558E;
     cursor: pointer;
-  }
-  
-  .sc-bk{
-    background: #212121;
-    border-radius: 5px;
-   
-      font-size: 21px;
-      margin: 10px;
   }
 
   .form-btn2{
