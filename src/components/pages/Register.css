@@ -128,4 +128,84 @@
 
   .form-text{
     margin-left: 100px;
-  }
+      }
+
+.reg-bk {
+    background-color: #141518;
+}
+
+.bk-1 {
+    background-color: #141518;
+}
+
+.reg-text {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    padding: 30px 0;
+}
+
+.form-heading4, .form-heading2 {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.flexs {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.form-content-reg {
+    display: grid;
+    gap: 20px;
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.form-content-reg input {
+    width: 100%;
+}
+
+.newpost {
+    text-decoration: none;
+    color: red;
+    padding: 10px 0;
+}
+
+.need-acct {
+    padding: 20px 0;
+}
+
+.imgur-icons, .grid-5 {
+    width: 100%;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .reg-text {
+        font-size: 30px;
+    }
+
+    .form-heading4, .form-heading2 {
+        font-size: 18px;
+    }
+
+    .form-content-reg {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .reg-text {
+        font-size: 24px;
+    }
+
+    .form-heading4, .form-heading2 {
+        font-size: 16px;
+    }
+}
