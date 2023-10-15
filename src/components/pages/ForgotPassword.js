@@ -21,7 +21,7 @@ function  ForgotPassword(){
     const sendPasswordResetEmail = async (email) => {
         try {
           // Assuming you have an API endpoint to handle the password reset request
-          const response = await axios.post('http://localhost:3008/forgot-password', { email });
+          const response = await axios.post('http://localhost:3008/reset-password', { email });
     
           if (response.data.success) {
             toast.success('Password reset email sent successfully!');
