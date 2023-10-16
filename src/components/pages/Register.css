@@ -1,4 +1,4 @@
-.reg-bk{
+ .reg-bk{
     background-color: #141518;
   }
 
@@ -121,13 +121,18 @@
   }
 
   .form-content-reg input{
-    width: 600px;
+    width: 100%;
+    /* width: 600px; */
     height: 50px;
     border-radius: 5px;
     background-color: #141518;
     color: #fff;
     padding: 4px;
   }
+  
+/* .form-content-reg input {
+    width: 100%;
+} */
 
   .form-text{
     margin-left: 100px;
@@ -162,17 +167,13 @@
     padding: 20px 0;
 }
 
-.form-content-reg {
+/* .form-content-reg {
     display: grid;
     gap: 20px;
     width: 80%;
     margin: auto;
     padding: 20px 0;
-}
-
-.form-content-reg input {
-    width: 100%;
-}
+} */
 
 .newpost {
     text-decoration: none;
@@ -184,9 +185,9 @@
     padding: 20px 0;
 }
 
-.imgur-icons, .grid-5 {
+/* .imgur-icons, .grid-5 {
     width: 100%;
-}
+} */
 
 /* Media queries for responsiveness */
 @media screen and (max-width: 768px) {
@@ -201,6 +202,15 @@
     .form-content-reg {
         width: 90%;
     }
+
+     .imgur-icons, .grid-5 {
+    width: 95%;
+    margin: auto;
+   } 
+
+   .sc-bk {
+    margin: 10px 0px;
+}
 }
 
 @media screen and (max-width: 480px) {
