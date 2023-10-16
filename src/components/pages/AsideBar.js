@@ -24,6 +24,7 @@ import Notification from "../pages/Notification";
 import {useParams} from "react-router-dom";
 import axios from 'axios';
 
+
 function AsideBar(){
     const { login, setLogin, online, setOnline, userID, setUserID, isLoggedIn, setIsLoggedIn, userName, setUserName, AdminUserID, setAdminUserID, } = useContext(CostcoContext)
     const navigate = useNavigate()
@@ -33,6 +34,7 @@ function AsideBar(){
     const [AvatarUrl, setAvatarUrl] = useState([]); 
 
 const handleNewPostClick = (route) => {
+    document.body.classList.toggle('mobile-view');
     if (isLoggedIn) {
       navigate(route);
     } else {
@@ -172,7 +174,7 @@ console.log(AvatarUrl)
            </aside>
 
            <nav>
-                <div className='flex'>
+                <div className='flex up-bar'>
                     <div className=''>
                         {/* <button onClick={handleLogout}>Sign out</button> */}
                         <form className="search-form">
@@ -181,7 +183,7 @@ console.log(AvatarUrl)
                         </form>
                     </div>
 
-                    <div className='flex notification-bar'>
+                    <div className=' notification-bar'>
                        <p><IoNotificationsSharp className='popup-icon2'/> </p>
                        <p><RiMessage2Fill className='popup-icon3'/> </p>
                        <p onClick={() => setIsBarOpen(true)}><FaBars className='popup-icon3'/> </p>

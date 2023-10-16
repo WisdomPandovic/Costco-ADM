@@ -1,4 +1,4 @@
-.reg-bk{
+  /*  .reg-bk{
     background-color: #141518;
   }
 
@@ -109,15 +109,15 @@
   .form-content-reg{
     display: grid;
     /* grid-template-columns: repeat(2, 1fr); */
-    gap: 20px;
+    /* gap: 20px;
     width: 40%;
     margin:  auto;
-    padding: 10px 0px;
+    padding: 10px 0px; */
     /* float:right; */
     /* background: #2C2F34; */
-  }
+  /* } */
 
-  .form-content-reg input{
+  /* .form-content-reg input{
     width: 600px;
     height: 50px;
     border-radius: 5px;
@@ -128,4 +128,232 @@
 
   .form-text{
     margin-left: 100px;
+  } */
+
+
+
+
+  .reg-bk{
+    background-color: #141518;
   }
+
+  .bk-1{
+    background-color: #141518;
+  }
+
+  .back {
+ 
+    color: #fff;
+    padding: 30px ;
+  }
+  
+  .reg-text{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    padding: 50px 0px;
+  }
+  
+  .form-heading4{
+    font-size: 10px;
+    color: white;
+    text-align: center;
+    padding: 50px 0px 10px;
+  }
+  
+  .form-heading2{
+    font-size: 10px;
+    color: white;
+    text-align: center;
+    padding: 10px 0px 10px;
+  }
+
+  .flexs{
+    display: flex;
+    gap: 60px;
+    margin-left: 140px;
+  }
+
+  .flexs button{
+    background-color: #5c69ff;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+.grid-5 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* Adjusted grid layout */
+    gap: 10px;
+    justify-content: center; /* Center the icons */
+}
+
+.sc-bk {
+    background: #212121;
+    border-radius: 5px;
+    font-size: 21px;
+    margin: 10px;
+    text-align: center; /* Center the icon within its container */
+    padding: 15px 0; /* Adjusted padding for better spacing */
+}
+
+  
+  .imgur-icons{
+    width: 40%;
+    margin: auto;
+    background: #2C2F34;
+    border-radius: 5px;
+  }
+  
+  .imgur-social-icons{
+    color: white;
+    font-size: 40px;
+    margin: 15px;
+    border-bottom-color: #3A558E;
+    cursor: pointer;
+  }
+
+  .form-btn2{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+  }
+  
+  .form-btn2 button{
+    background-color: #5c69ff;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .form-btn2 p{
+    cursor: pointer;
+    padding: 10px;
+    color: #fff;
+  }
+
+  .newpost{
+    text-decoration: none;
+    color: red;
+    padding: 10px;
+  }
+
+  .need-acct{
+   padding: 30px;
+  }
+
+  .form-content-reg{
+    display: grid;
+    /* grid-template-columns: repeat(2, 1fr); */
+    gap: 20px;
+    width: 40%;
+    margin:  auto;
+    padding: 10px 0px;
+    /* float:right; */
+    /* background: #2C2F34; */
+  }
+
+  .form-content-reg input{
+    width: 100%;
+    /* width: 600px; */
+    height: 50px;
+    border-radius: 5px;
+    background-color: #141518;
+    color: #fff;
+    padding: 4px;
+  }
+  
+/* .form-content-reg input {
+    width: 100%;
+} */
+
+  .form-text{
+    margin-left: 100px;
+      }
+
+.reg-bk {
+    background-color: #141518;
+}
+
+.bk-1 {
+    background-color: #141518;
+}
+
+.reg-text {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    padding: 30px 0;
+}
+
+.form-heading4, .form-heading2 {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.flexs {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* .form-content-reg {
+    display: grid;
+    gap: 20px;
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+} */
+
+.newpost {
+    text-decoration: none;
+    color: red;
+    padding: 10px 0;
+}
+
+.need-acct {
+    padding: 20px 0;
+}
+
+/* .imgur-icons, .grid-5 {
+    width: 100%;
+} */
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .reg-text {
+        font-size: 30px;
+    }
+
+    .form-heading4, .form-heading2 {
+        font-size: 18px;
+    }
+
+    .form-content-reg {
+        width: 90%;
+    }
+
+     .imgur-icons, .grid-5 {
+    width: 95%;
+    margin: auto;
+   } 
+
+   .sc-bk {
+    margin: 10px 0px;
+}
+}
+
+@media screen and (max-width: 480px) {
+    .reg-text {
+        font-size: 24px;
+    }
+
+    .form-heading4, .form-heading2 {
+        font-size: 16px;
+    }
+}

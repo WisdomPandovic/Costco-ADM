@@ -237,6 +237,7 @@ aside{
   cursor: pointer;
   display: flex;
   gap: 10px;
+  padding: 20px 0px 10px 0px;
 }
 
 .notification-bar p{
@@ -726,4 +727,83 @@ thead tbody{
 .user-table img{
   width: 100px;
   height: 100px;
+}
+
+.hamburger_container input{
+  display: none;
+}
+
+
+.hamburger_container label{
+  font-size: 30px;
+  cursor: pointer;
+  color: black;
+  position: fixed;
+  left: 20px;
+  top:20px ;
+  display: none;
+}
+
+.hide_nav_container{
+  display: none;
+  height: 70vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-image: url(./image/20220522_223226.jpg);
+  background-size: cover; 
+}
+
+
+/* Media queries for responsiveness */
+
+@media screen and (max-width: 767px) {
+  aside {
+    /* width: 100%;
+    height: auto;
+    max-height: none;
+    position: relative; */
+    display: none;
+  }
+
+   .up-bar {
+    display: block;
+
+  }
+
+
+  .team-member, .products, .product-list, .checkout, .search-form, .admin-users, .users-list, .form-content, 
+  .form-content-tag, .tag-list, nav{
+    width: 100%;
+   
+  }
+
+  .hamburger_container label{
+    display: block;
+    z-index: 20;
+}
+
+
+input:checked ~ .hide_nav_container {
+    display: block;
+    color: black;
+}
+
+.notification-bar{
+  display: flex;
+  gap: 10px;
+  margin: 0px 10px;
+}
+}
+
+
+@media screen and (max-width: 480px) {
+  .reg-text {
+      font-size: 24px;
+  }
+
+  .form-heading4, .form-heading2 {
+      font-size: 16px;
+  }
 }
